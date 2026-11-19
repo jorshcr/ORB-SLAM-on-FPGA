@@ -1,0 +1,46 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
+| Date         : Thu Nov 19 00:15:49 2026
+| Host         : tsjoshlaptop running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file C:/Users/joshr/projects/ORB-SLAM-on-FPGA/orb_test_output/orb_20261119_001224/hierarchy_routed.rpt
+| Design       : orb_pyramid_level
+| Device       : xc7a100tcsg324-1
+| Speed File   : -1
+| Design State : Routed
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-------------------------+-----------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+|         Instance        |            Module           | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs  | RAMB36 | RAMB18 | DSP Blocks |
++-------------------------+-----------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+| orb_pyramid_level       |                       (top) |       3777 |       3652 |       0 |  125 | 14343 |      9 |      0 |         36 |
+|   descriptor_window     | line_window__parameterized0 |        543 |        543 |       0 |    0 | 10962 |      8 |      0 |          0 |
+|   fast                  |                    fast_top |       1855 |       1843 |       0 |   12 |  1564 |      1 |      0 |          0 |
+|     nms                 |                    fast_nms |         55 |         55 |       0 |    0 |   180 |      1 |      0 |          0 |
+|       (nms)             |                    fast_nms |         13 |         13 |       0 |    0 |    37 |      0 |      0 |          0 |
+|       fast_score_window |                 line_window |         42 |         42 |       0 |    0 |   143 |      1 |      0 |          0 |
+|     score               |                  fast_score |       1800 |       1788 |       0 |   12 |  1384 |      0 |      0 |          0 |
+|   gaussian              |               gaussian_blur |        297 |        285 |       0 |   12 |   376 |      0 |      0 |         18 |
+|   orientation           |             orientation_top |       1228 |       1125 |       0 |  103 |  1441 |      0 |      0 |         18 |
+|     angle               |      quadrant_angle_compute |        373 |        373 |       0 |    0 |   231 |      0 |      0 |         16 |
+|       (angle)           |      quadrant_angle_compute |         23 |         23 |       0 |    0 |   172 |      0 |      0 |          1 |
+|       tangent_products  |                tan_multiply |        350 |        350 |       0 |    0 |    59 |      0 |      0 |         15 |
+|     moments             |              moment_compute |        855 |        752 |       0 |  103 |  1210 |      0 |      0 |          2 |
+|       (moments)         |              moment_compute |        128 |         36 |       0 |   92 |   189 |      0 |      0 |          0 |
+|       column_adder      |                  column_sum |        332 |        332 |       0 |    0 |   396 |      0 |      0 |          0 |
+|       x_compute         |                    x_moment |         65 |         65 |       0 |    0 |    59 |      0 |      0 |          2 |
+|       y_adder           |                y_moment_sum |        288 |        277 |       0 |   11 |   520 |      0 |      0 |          0 |
+|       y_compute         |                    y_moment |         42 |         42 |       0 |    0 |    46 |      0 |      0 |          0 |
++-------------------------+-----------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+
