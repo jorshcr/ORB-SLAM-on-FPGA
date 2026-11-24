@@ -9,3 +9,5 @@ Dated snapshots record the tested design, constraints, resource use, timing resu
 | [2026-11-24, pipelined](2026-11-24-orb-pipelined.md) | ORB, 3 BRIEF engines, registered pattern lookup | 100 MHz | 20,017 | 30,736 | 11 | 36 | +0.305 ns | -0.502 ns |
 
 For future runs, add a dated Markdown snapshot, preserve the reports in a matching subfolder, and append a row here.
+
+Resource-only experiments: [2026-11-24 BRIEF DSP mapping](2026-11-24-brief-dsp.md) compares isolated baseline/DSP implementations and estimates the resulting ORB usage. No routed timing result is implied.

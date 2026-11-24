@@ -1,0 +1,30 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
+| Date         : Tue Nov 24 15:11:47 2026
+| Host         : tsjoshlaptop running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file C:/Users/joshr/projects/ORB-SLAM-on-FPGA/orb_test_output/brief_resources_20261124_150904/dsp_hierarchy.rpt
+| Design       : brief_engine
+| Device       : xc7a100tcsg324-1
+| Speed File   : -1
+| Design State : Optimized
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++------------------+---------------+------------+------------+---------+------+------+--------+--------+------------+
+|     Instance     |     Module    | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
++------------------+---------------+------------+------------+---------+------+------+--------+--------+------------+
+| brief_engine     |         (top) |       4896 |       4896 |       0 |    0 | 8529 |      0 |      0 |          8 |
+|   (brief_engine) |         (top) |       4816 |       4816 |       0 |    0 | 8529 |      0 |      0 |          8 |
+|   pattern        | brief_pattern |         80 |         80 |       0 |    0 |    0 |      0 |      0 |          0 |
++------------------+---------------+------------+------------+---------+------+------+--------+--------+------------+
+
+

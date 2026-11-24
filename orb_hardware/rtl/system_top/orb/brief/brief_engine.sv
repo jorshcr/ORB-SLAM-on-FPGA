@@ -39,6 +39,15 @@ module brief_engine (
     logic signed [5:0] y_rotated [0:1];
     logic [5:0] window [0:36][0:36];
     logic [5:0] pixel_a, pixel_b;
+    (* use_dsp = "yes" *) logic signed [13:0] x_cos [0:1], y_sin [0:1];
+    (* use_dsp = "yes" *) logic signed [13:0] x_sin [0:1], y_cos [0:1];
+
+    for (genvar point = 0; point < 2; point++) begin : g_rotation
+        assign x_cos[point] = x_delayed[point] * cosine_saved;
+        assign y_sin[point] = y_delayed[point] * sine_saved;
+        assign x_sin[point] = x_delayed[point] * sine_saved;
+        assign y_cos[point] = y_delayed[point] * cosine_saved;
+    end
 
     brief_pattern pattern (
         .pair_index(pair_index),
@@ -125,10 +134,10 @@ module brief_engine (
 
                     // Stage 2: rotate both points; remove seven fractional bits.
                     if (valid_delayed[0]) begin
-                        x_rotated[0] <= 6'((15'(x_delayed[0]) * cosine_saved - 15'(y_delayed[0]) * sine_saved) >>> 7);
-                        y_rotated[0] <= 6'((15'(x_delayed[0]) * sine_saved + 15'(y_delayed[0]) * cosine_saved) >>> 7);
-                        x_rotated[1] <= 6'((15'(x_delayed[1]) * cosine_saved - 15'(y_delayed[1]) * sine_saved) >>> 7);
-                        y_rotated[1] <= 6'((15'(x_delayed[1]) * sine_saved + 15'(y_delayed[1]) * cosine_saved) >>> 7);
+                        for (int point = 0; point < 2; point++) begin
+                            x_rotated[point] <= 6'((15'(x_cos[point]) - 15'(y_sin[point])) >>> 7);
+                            y_rotated[point] <= 6'((15'(x_sin[point]) + 15'(y_cos[point])) >>> 7);
+                        end
                     end
 
                     // Stage 3: convert centered offsets to window indices.
