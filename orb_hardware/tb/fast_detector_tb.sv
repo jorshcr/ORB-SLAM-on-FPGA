@@ -89,7 +89,7 @@ module fast_detector_tb;
         .clk(clk), .reset(reset),
         .in_pixel(pixel_in), .in_valid(pixel_valid), .in_x(col), .in_y(row),
         .threshold(threshold),
-        .kp_overflow(kp_overflow)
+        .kp_overflow(kp_overflow), .descriptor_ready(1'b1)
     );
 
     assign out_valid = dut.out_valid;
@@ -198,7 +198,7 @@ module fast_detector_tb;
                 end
             end
             #1;
-            if (!reset && dut.brief_valid[engine]) begin
+            if (!reset && dut.brief_valid[engine] && dut.brief_ready[engine]) begin
                 if (!pending || cycle-accepted_cycle != 259)
                     $fatal(1, "BRIEF completion timing mismatch");
                 if (dut.brief_descriptor[engine] !== expected_descriptor ||

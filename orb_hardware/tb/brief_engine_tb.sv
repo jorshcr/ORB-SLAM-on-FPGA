@@ -6,6 +6,7 @@ module brief_engine_tb;
     logic [36:0][5:0] in_col = '0;
     logic signed [7:0] sine = 0, cosine = 127;
     wire busy, out_valid;
+    logic out_ready = 1;
     wire in_ready = !busy && !reset;
     wire [255:0] out_descriptor;
     logic [7:0] ref_index;
@@ -18,7 +19,7 @@ module brief_engine_tb;
         .clk(clk), .reset(reset), .in_col(in_col), .in_angle(4'd0),
         .in_quadrant(2'd0), .sine(sine), .cosine(cosine), .in_score(8'd20),
         .in_valid(in_valid), .keypoint_match(keypoint_match), .busy(busy),
-        .out_descriptor(out_descriptor), .out_valid(out_valid)
+        .out_descriptor(out_descriptor), .out_valid(out_valid), .out_ready(out_ready)
     );
     brief_pattern reference_pattern (.pair_index(ref_index),
         .x_a(xa), .y_a(ya), .x_b(xb), .y_b(yb));
@@ -72,6 +73,13 @@ module brief_engine_tb;
             end
             if (cycles != 259 || !out_valid) $fatal(1, "Wrong completion cycle %0d", cycles);
             if (out_descriptor !== expected) $fatal(1, "Descriptor mismatch case %0d", test_id);
+            in_valid = 0; out_ready = 0;
+            repeat (40) begin
+                tick();
+                if (!out_valid || !busy || out_descriptor !== expected)
+                    $fatal(1, "Result changed under backpressure");
+            end
+            out_ready = 1;
             in_valid = 0; tick();
             if (out_valid) $fatal(1, "Valid must pulse");
         end

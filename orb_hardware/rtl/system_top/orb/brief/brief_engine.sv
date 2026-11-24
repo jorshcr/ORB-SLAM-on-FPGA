@@ -14,7 +14,8 @@ module brief_engine (
     output logic busy,
 
     output logic [255:0] out_descriptor,
-    output logic out_valid
+    output logic out_valid,
+    input logic out_ready
 );
 
     typedef enum logic [1:0] {IDLE, DESCRIPTOR, DRAIN} state_t;
@@ -45,8 +46,8 @@ module brief_engine (
         .x_b(x_b), .y_b(y_b)
     );
 
-    assign in_ready = (state == IDLE) && window_ready && !reset;
-    assign busy = (state != IDLE);
+    assign in_ready = (state == IDLE) && window_ready && !out_valid && !reset;
+    assign busy = (state != IDLE) || out_valid;
     // A match freezes the window already present before the accepting edge.
     assign window_shift = in_valid && (state != DESCRIPTOR) &&
                           !(keypoint_match && in_ready) && !reset;
@@ -68,7 +69,8 @@ module brief_engine (
             out_descriptor <= '0;
             out_valid <= 1'b0;
         end else begin
-            out_valid <= 1'b0;
+            if (out_valid && out_ready)
+                out_valid <= 1'b0;
             valid_delayed <= '0;
 
             if (window_shift) begin

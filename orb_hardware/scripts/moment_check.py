@@ -3,7 +3,7 @@ import tempfile
 from fast_check import ROOT, vivado
 
 with tempfile.TemporaryDirectory() as work:
-    rtl = sorted(str(p) for p in (ROOT / "rtl/orb/orientation").glob("*.sv"))
+    rtl = sorted(str(p) for p in (ROOT / "rtl/system_top/orb/orientation").glob("*.sv"))
     vivado("xvlog", ["--sv", *rtl, str(ROOT / "tb/moment_compute_tb.sv")], work)
     vivado("xelab", ["moment_compute_tb", "-s", "moments_test"], work)
     log = vivado("xsim", ["moments_test", "-runall"], work)

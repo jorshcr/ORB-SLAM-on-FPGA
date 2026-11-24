@@ -3,7 +3,7 @@ import tempfile
 from fast_check import ROOT, vivado
 
 with tempfile.TemporaryDirectory() as work:
-    src = ROOT / "rtl/orb/orientation"
+    src = ROOT / "rtl/system_top/orb/orientation"
     vivado("xvlog", ["--sv", str(src / "tan_multiply.sv"),
                      str(src / "quadrant_angle_compute.sv"),
                      str(ROOT / "tb/tan_multiply_tb.sv")], work)

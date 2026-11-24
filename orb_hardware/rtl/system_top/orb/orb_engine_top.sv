@@ -19,7 +19,12 @@ module orb_pyramid_level #(
     output logic [BRIEF_ENGINES-1:0][255:0] brief_descriptor,
     output logic [BRIEF_ENGINES-1:0][18:0] brief_pos,
     output logic [BRIEF_ENGINES-1:0][7:0] brief_score,
-    output logic brief_dropped
+    output logic brief_dropped,
+    output logic descriptor_valid,
+    input logic descriptor_ready,
+    output logic [255:0] descriptor_data,
+    output logic [18:0] descriptor_pos,
+    output logic [7:0] descriptor_score
 );
 
     logic       out_valid;
@@ -45,7 +50,15 @@ module orb_pyramid_level #(
     logic [8:0] kp_y;
     logic [7:0] kp_score;
     logic       kp_reset_busy;
-    logic [BRIEF_ENGINES-1:0] brief_busy;
+    logic [BRIEF_ENGINES-1:0] brief_busy, brief_ready;
+    logic [BRIEF_ENGINES-1:0][282:0] result_data;
+
+    round_robin_arbiter #(.INPUTS(BRIEF_ENGINES), .DATA_W(283)) result_arbiter (
+        .clk(clk), .reset(reset),
+        .in_valid(brief_valid), .in_data(result_data), .in_ready(brief_ready),
+        .out_valid(descriptor_valid), .out_ready(descriptor_ready),
+        .out_data({descriptor_data, descriptor_pos, descriptor_score})
+    );
 
     logic [6:0][6:0][7:0] win;
     logic win_valid;
@@ -207,6 +220,8 @@ module orb_pyramid_level #(
     end
 
     for (genvar engine = 0; engine < BRIEF_ENGINES; engine++) begin : g_brief
+        assign result_data[engine] = {brief_descriptor[engine], brief_pos[engine], brief_score[engine]};
+
         brief_engine brief (
             .clk(clk), .reset(reset),
             .in_col(brief_col_delayed[COLUMN_DELAY-1]),
@@ -214,7 +229,8 @@ module orb_pyramid_level #(
             .in_angle(orientation_sector), .in_quadrant(orientation_quadrant),
             .sine(orientation_sin), .cosine(orientation_cos), .in_score(kp_score),
             .keypoint_match(brief_start[engine]), .busy(brief_busy[engine]),
-            .out_descriptor(brief_descriptor[engine]), .out_valid(brief_valid[engine])
+            .out_descriptor(brief_descriptor[engine]), .out_valid(brief_valid[engine]),
+            .out_ready(brief_ready[engine])
         );
     end
 
