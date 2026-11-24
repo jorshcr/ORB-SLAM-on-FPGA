@@ -1,0 +1,114 @@
+[
+  {
+    "sequence": "freiburg1_desk",
+    "archive_url": "https://webshare.cvg.cit.tum.de/g/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_desk.tgz",
+    "archive_member": "rgbd_dataset_freiburg1_desk/rgb/1305031469.595755.png",
+    "sha256": "95c63778ad3a3aa4b441c7aa344cc90d5c86e296987f974b4d85df144647bac7",
+    "width": 640,
+    "height": 480,
+    "thresholds": [
+      20,
+      40
+    ],
+    "gaps": false,
+    "fast_counts": [
+      663,
+      160
+    ],
+    "admitted": 737,
+    "descriptors": 675,
+    "dropped": 62,
+    "per_engine": [
+      395,
+      193,
+      87
+    ],
+    "orientations": 523848,
+    "passed": true,
+    "grayscale_sha256": "16b02bd839bf3a8e928b175cb1513ec1efec4f2077e45a76eafbe7c04ff5b1ef"
+  },
+  {
+    "sequence": "freiburg1_desk2",
+    "archive_url": "https://webshare.cvg.cit.tum.de/g/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_desk2.tgz",
+    "archive_member": "rgbd_dataset_freiburg1_desk2/rgb/1305031539.275652.png",
+    "sha256": "0dd7ed89d90a8ccf019d9ecf88fbf1f810a4046b713dcbac1fa89534d38124e2",
+    "width": 640,
+    "height": 480,
+    "thresholds": [
+      20,
+      40
+    ],
+    "gaps": true,
+    "fast_counts": [
+      853,
+      178
+    ],
+    "admitted": 966,
+    "descriptors": 851,
+    "dropped": 115,
+    "per_engine": [
+      505,
+      233,
+      113
+    ],
+    "orientations": 523848,
+    "passed": true,
+    "grayscale_sha256": "0f16ea49111bc2b953b095f9a983a0c31f58ecaee31df46a18c70cb08029f17d"
+  },
+  {
+    "sequence": "freiburg1_room",
+    "archive_url": "https://webshare.cvg.cit.tum.de/g/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_room.tgz",
+    "archive_member": "rgbd_dataset_freiburg1_room/rgb/1305031929.033640.png",
+    "sha256": "ac7284f1d3f0acd18fb539168ff0784b1f78d25e7a91466fd5b68f723fdeec0a",
+    "width": 640,
+    "height": 480,
+    "thresholds": [
+      20,
+      40
+    ],
+    "gaps": false,
+    "fast_counts": [
+      187,
+      24
+    ],
+    "admitted": 195,
+    "descriptors": 194,
+    "dropped": 1,
+    "per_engine": [
+      153,
+      32,
+      9
+    ],
+    "orientations": 523848,
+    "passed": true,
+    "grayscale_sha256": "11065c52f481176fae792de637179a49e6cbc941b723db719da094aaed39be3d"
+  },
+  {
+    "sequence": "freiburg1_xyz",
+    "archive_url": "https://webshare.cvg.cit.tum.de/g/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_xyz.tgz",
+    "archive_member": "rgbd_dataset_freiburg1_xyz/rgb/1305031107.143260.png",
+    "sha256": "71089b426b13d01cdc95327a41700eff5914415ec30b04907c0b15e2cead1cba",
+    "width": 640,
+    "height": 480,
+    "thresholds": [
+      20,
+      40
+    ],
+    "gaps": true,
+    "fast_counts": [
+      2473,
+      1135
+    ],
+    "admitted": 3547,
+    "descriptors": 2589,
+    "dropped": 958,
+    "per_engine": [
+      1240,
+      804,
+      545
+    ],
+    "orientations": 523848,
+    "passed": true,
+    "grayscale_sha256": "850fa2e1a2cd28077bab3fb7e728f0806e95d4bebb22278f5df28a0c1ce041ce"
+  }
+]

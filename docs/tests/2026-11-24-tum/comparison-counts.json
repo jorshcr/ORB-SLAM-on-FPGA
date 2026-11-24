@@ -1,0 +1,58 @@
+[
+  {
+    "sequence": "freiburg1_desk",
+    "threshold": 20,
+    "hardware": 534,
+    "software": 594,
+    "software_only": 60
+  },
+  {
+    "sequence": "freiburg1_desk2",
+    "threshold": 20,
+    "hardware": 684,
+    "software": 794,
+    "software_only": 110
+  },
+  {
+    "sequence": "freiburg1_room",
+    "threshold": 20,
+    "hardware": 172,
+    "software": 173,
+    "software_only": 1
+  },
+  {
+    "sequence": "freiburg1_xyz",
+    "threshold": 20,
+    "hardware": 1637,
+    "software": 2423,
+    "software_only": 786
+  },
+  {
+    "sequence": "freiburg1_desk",
+    "threshold": 40,
+    "hardware": 141,
+    "software": 143,
+    "software_only": 2
+  },
+  {
+    "sequence": "freiburg1_desk2",
+    "threshold": 40,
+    "hardware": 167,
+    "software": 172,
+    "software_only": 5
+  },
+  {
+    "sequence": "freiburg1_room",
+    "threshold": 40,
+    "hardware": 22,
+    "software": 22,
+    "software_only": 0
+  },
+  {
+    "sequence": "freiburg1_xyz",
+    "threshold": 40,
+    "hardware": 952,
+    "software": 1124,
+    "software_only": 172
+  }
+]

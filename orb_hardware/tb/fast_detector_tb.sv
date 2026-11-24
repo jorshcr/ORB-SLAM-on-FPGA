@@ -11,6 +11,8 @@ module fast_detector_tb;
     parameter PARTIAL = W*3 + W/2 + 3;   // < 4 rows: produces no outputs
     parameter IMAGE   = "image.hex";
     parameter KP_OUT  = "rtl_keypoints.txt";
+    parameter BLUR_REF = "";
+    parameter ANGLE_REF = "";
 
     reg        clk = 0;
     reg        reset = 1;
@@ -117,10 +119,17 @@ module fast_detector_tb;
     always #5 clk = ~clk;
 
     reg [7:0] image [0:W*H-1];
+    reg [7:0] blur_reference [0:W*H-1];
+    reg [5:0] angle_reference [0:W*H-1];
+    integer descriptor_fd;
+    integer admitted = 0, dispatched = 0, dropped = 0, completed = 0;
     integer   fd, errors, frame_out, exp_x, exp_y, kp_count, seed, x, y, f, g;
 
     initial begin
         $readmemh(IMAGE, image);
+        if (BLUR_REF != "") $readmemh(BLUR_REF, blur_reference);
+        if (ANGLE_REF != "") $readmemh(ANGLE_REF, angle_reference);
+        descriptor_fd = $fopen("rtl_descriptors.txt", "w");
         fd = $fopen(KP_OUT, "w");
         errors = 0; frame_out = 0; exp_x = 0; exp_y = 0; kp_count = 0;
         seed = SEED;
@@ -131,6 +140,7 @@ module fast_detector_tb;
 
     function automatic [7:0] reference_blur(input int cx, cy);
         int sum;
+        if (BLUR_REF != "") return blur_reference[cy*W+cx];
         sum = 0;
         for (int r = 0; r < 7; r++)
             for (int c = 0; c < 7; c++)
@@ -140,6 +150,9 @@ module fast_detector_tb;
 
     always @(posedge clk) begin
         if (!reset) begin
+            if (dut.kp_push && dut.kp_write_ready) admitted++;
+            if (|dut.brief_start) dispatched++;
+            if (dut.keypoint_stale || (dut.keypoint_matches && !dut.brief_available)) dropped++;
             if (!$onehot0(dut.brief_start)) $fatal(1, "Multiple BRIEF grants");
             for (int engine = 0; engine < 3; engine++) begin
                 if (dut.brief_start[engine]) begin
@@ -192,6 +205,10 @@ module fast_detector_tb;
                     dut.brief_pos[engine] !== expected_pos || dut.brief_score[engine] !== expected_score)
                     $fatal(1, "BRIEF descriptor/metadata mismatch engine %0d", engine);
                 pending = 0;
+                completed++;
+                $fdisplay(descriptor_fd, "%0d %0d %0d %0d %064h", engine,
+                          expected_pos[18:9], expected_pos[8:0], expected_score,
+                          dut.brief_descriptor[engine]);
             end
         end
     end
@@ -230,6 +247,12 @@ module fast_detector_tb;
         end
         angle_valid_pipe = reset ? '0 : {angle_valid_pipe[11:0], blur_win_valid && blur_win_inside};
         if (blur_win_valid && blur_win_inside) begin
+            if (ANGLE_REF != "") begin
+                local_sector = int'(angle_reference[(int'(blur_win_pos[8:0])-21)*W +
+                                                    int'(blur_win_pos[18:9])-21] & 6'h0f);
+                quadrant = int'(angle_reference[(int'(blur_win_pos[8:0])-21)*W +
+                                                int'(blur_win_pos[18:9])-21] >> 4);
+            end else begin
             mx = 0;
             my = 0;
             for (int r = 0; r < 37; r++) begin
@@ -244,6 +267,7 @@ module fast_detector_tb;
             local_sector = 0;
             for (int k = 0; k < 16; k++)
                 if (ay != 0 && ax*tangent[k] <= ay*65536) local_sector = k;
+            end
             angle_tags[0] = blur_win_pos;
             angle_quadrants[0] = quadrant;
             angle_codes[0] = local_sector;
@@ -346,6 +370,11 @@ module fast_detector_tb;
         // Drain the pipeline.
         repeat (320) @(posedge clk);
         $fclose(fd);
+        $fclose(descriptor_fd);
+        if (completed != dispatched || admitted != dispatched + dropped)
+            $fatal(1, "BRIEF accounting mismatch");
+        $display("BRIEF COUNTS: admitted=%0d dispatched=%0d completed=%0d dropped=%0d",
+                 admitted, dispatched, completed, dropped);
 
         if (expected_keypoints.size() != 0 || kp_valid)
             $fatal(1, "Keypoint FIFO did not drain");

@@ -1,0 +1,23 @@
+
+****** xsim v2024.1 (64-bit)
+  **** SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Tue Nov 24 02:17:09 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/dataset_test/xsim_script.tcl
+# xsim {dataset_test} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+Warning: SIM_ASSERT_CHK (1) specifies simulation message reporting, messages related to potential misuse will be reported.
+Time: 1 ps  Iteration: 0  Process: /fast_detector_tb(BLUR_REF="blur.hex",ANGLE_REF="angle.hex")/dut/keypoint_fifo/storage/xpm_fifo_base_inst/Initial1559_53  Scope: fast_detector_tb(BLUR_REF="blur.hex",ANGLE_REF="angle.hex").dut.keypoint_fifo.storage.xpm_fifo_base_inst  File: C:\Xilinx\Vivado\2024.1\data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 1566
+BRIEF COUNTS: admitted=737 dispatched=675 completed=675 dropped=62
+Orientation PASS: 523848 complete patch angles checked
+TB PASS: coverage/order/gray checks OK, 823 keypoints written to rtl_keypoints.txt
+$finish called at time : 6169875 ns : File "C:/Users/joshr/projects/ORB-SLAM-on-FPGA/orb_hardware/tb/fast_detector_tb.sv" Line 399
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:03:09 . Memory (MB): peak = 224.922 ; gain = 0.000
+exit
+INFO: xsimkernel Simulation Memory Usage: 16168 KB (Peak: 16168 KB), Simulation CPU Usage: 188405 ms
+INFO: [Common 17-206] Exiting xsim at Tue Nov 24 02:20:19 2026...
