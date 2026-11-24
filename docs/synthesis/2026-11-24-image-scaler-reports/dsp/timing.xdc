@@ -1,0 +1,5 @@
+create_clock -name clk -period 10.000 [get_ports clk]
+set_input_delay -clock clk -max 2.000 [get_ports {reset in_valid in_gray* in_x* in_y*}]
+set_input_delay -clock clk -min 0.000 [get_ports {reset in_valid in_gray* in_x* in_y*}]
+set_output_delay -clock clk -max 2.000 [get_ports {out_gray* out_x* out_y* out_valid}]
+set_output_delay -clock clk -min 0.000 [get_ports {out_gray* out_x* out_y* out_valid}]
