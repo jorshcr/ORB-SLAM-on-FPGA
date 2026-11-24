@@ -123,7 +123,7 @@ def run_rtl(img, t0, t1, gaps, seed, work):
     with open(hexf, "w") as f:
         f.write("\n".join(f"{v:02x}" for v in img.flatten()) + "\n")
     vivado("xvlog", ["--sv", TB, *RTL], work)
-    args = ["fast_detector_tb", "-s", "fast_test"]
+    args = ["fast_detector_tb", "-L", "xpm", "-s", "fast_test"]
     for key, value in dict(W=w, H=h, THRESH0=t0, THRESH1=t1, GAPS=gaps, SEED=seed).items():
         args += ["--generic_top", f"{key}={value}"]
     vivado("xelab", args, work)

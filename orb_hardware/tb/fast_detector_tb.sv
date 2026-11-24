@@ -46,40 +46,73 @@ module fast_detector_tb;
         end
     end
 
-    logic             win_valid;
-    logic [6:0][6:0][7:0] win;
-    logic [18:0]      win_pos;
-
-    line_window #(
-        .N(7), .LINE_W(W), .DATA_W(8), .TAG_W(19)
-    ) pixel_window (
-        .clk(clk), .reset(reset),
-        .in_valid(pixel_valid), .in_data(pixel_in),
-        .in_col(col), .in_tag({col, row}),
-        .out_valid(win_valid), .out_win(win), .out_tag(win_pos)
-    );
-
     wire [36:0][36:0][7:0] blur_win;
     wire blur_win_valid, blur_win_inside;
     wire [18:0] blur_win_pos;
 
     wire [1:0] orientation_quadrant;
-    wire [5:0] orientation_sector;
+    wire [3:0] orientation_sector;
     wire orientation_valid;
     wire [18:0] orientation_pos;
+    wire signed [7:0] orientation_sin, orientation_cos;
+    wire kp_valid, kp_reset_busy, kp_overflow;
+    wire [9:0] kp_x;
+    wire [8:0] kp_y;
+    wire [7:0] kp_score;
+    wire kp_ready;
+    logic [26:0] expected_keypoints[$];
+    logic [26:0] expected_keypoint;
+    // Check arbiter-driven FIFO consumption against the post-NMS stream.
+    always @(posedge clk) begin
+        if (reset) begin
+            expected_keypoints.delete();
+        end else begin
+            if (out_valid && out_inside && out_keypoint &&
+                W >= 43 && H >= 43 && out_x >= 21 && out_x < W-21 &&
+                out_y >= 21 && out_y < H-21)
+                expected_keypoints.push_back({out_x, out_y, out_score});
+            if (kp_valid && kp_ready) begin
+                if (expected_keypoints.size() == 0)
+                    $fatal(1, "Unexpected FIFO keypoint");
+                expected_keypoint = expected_keypoints.pop_front();
+                if ({kp_x, kp_y, kp_score} !== expected_keypoint)
+                    $fatal(1, "FIFO keypoint order/data mismatch");
+            end
+            if (kp_overflow)
+                $fatal(1, "Unexpected keypoint FIFO overflow");
+        end
+    end
 
     orb_pyramid_level #(.FRAME_WIDTH(W), .FRAME_HEIGHT(H)) dut (
         .clk(clk), .reset(reset),
-        .win(win), .win_valid(win_valid), .win_pos(win_pos),
+        .in_pixel(pixel_in), .in_valid(pixel_valid), .in_x(col), .in_y(row),
         .threshold(threshold),
-        .out_valid(out_valid), .out_inside(out_inside),
-        .out_x(out_x), .out_y(out_y), .out_keypoint(out_keypoint),
-        .out_score(out_score), .out_gray(out_gray),
-        .blur_win(blur_win), .blur_win_valid(blur_win_valid),
-        .blur_win_inside(blur_win_inside), .blur_win_pos(blur_win_pos),
-        .orientation_quadrant(orientation_quadrant), .orientation_sector(orientation_sector),
-        .orientation_valid(orientation_valid), .orientation_pos(orientation_pos)
+        .kp_overflow(kp_overflow)
     );
+
+    assign out_valid = dut.out_valid;
+    assign out_inside = dut.out_inside;
+    assign out_x = dut.out_x;
+    assign out_y = dut.out_y;
+    assign out_keypoint = dut.out_keypoint;
+    assign out_score = dut.out_score;
+    assign out_gray = dut.out_gray;
+    assign blur_win = dut.blur_win;
+    assign blur_win_valid = dut.blur_win_valid;
+    assign blur_win_inside = dut.blur_win_inside;
+    assign blur_win_pos = dut.blur_win_pos;
+    assign orientation_quadrant = dut.orientation_quadrant;
+    assign orientation_sector = dut.orientation_sector;
+    assign orientation_valid = dut.orientation_valid;
+    assign orientation_pos = dut.orientation_pos;
+    assign orientation_sin = dut.orientation_sin;
+    assign orientation_cos = dut.orientation_cos;
+    assign kp_valid = dut.kp_valid;
+    assign kp_ready = dut.kp_ready;
+    assign kp_x = dut.kp_x;
+    assign kp_y = dut.kp_y;
+    assign kp_score = dut.kp_score;
+    assign kp_reset_busy = dut.kp_reset_busy;
 
     always #5 clk = ~clk;
 
@@ -106,6 +139,64 @@ module fast_detector_tb;
     endfunction
 
     always @(posedge clk) begin
+        if (!reset) begin
+            if (!$onehot0(dut.brief_start)) $fatal(1, "Multiple BRIEF grants");
+            for (int engine = 0; engine < 3; engine++) begin
+                if (dut.brief_start[engine]) begin
+                    if (!kp_valid || !kp_ready || !orientation_valid ||
+                        kp_x != orientation_pos[18:9]-21 || kp_y != orientation_pos[8:0]-21)
+                        $fatal(1, "BRIEF grant without coordinate match");
+                    for (int higher = 0; higher <= engine; higher++)
+                        if (dut.brief_busy[higher] != (higher == engine ? 1'b0 : 1'b1))
+                            $fatal(1, "BRIEF priority violation");
+                end
+            end
+        end
+    end
+
+    for (genvar engine = 0; engine < 3; engine++) begin : g_check_brief
+        logic [255:0] expected_descriptor;
+        logic pending = 0;
+        logic [18:0] expected_pos;
+        logic [7:0] expected_score;
+        int xa, ya, xb, yb, ax, ay, bx, by;
+        int accepted_cycle, cycle = 0;
+        always @(posedge clk) begin
+            cycle++;
+            if (reset) pending = 0;
+            else if (dut.brief_start[engine]) begin
+                if (pending) $fatal(1, "BRIEF reused before completion");
+                pending = 1;
+                accepted_cycle = cycle;
+                expected_pos = {kp_x, kp_y};
+                expected_score = kp_score;
+                for (int pair_id = 0; pair_id < 256; pair_id++) begin
+                    xa = int'(dut.g_brief[engine].brief.pattern.PAIRS[pair_id][0]);
+                    ya = int'(dut.g_brief[engine].brief.pattern.PAIRS[pair_id][1]);
+                    xb = int'(dut.g_brief[engine].brief.pattern.PAIRS[pair_id][2]);
+                    yb = int'(dut.g_brief[engine].brief.pattern.PAIRS[pair_id][3]);
+                    ax = (xa*int'(orientation_cos)-ya*int'(orientation_sin)) >>> 7;
+                    ay = (xa*int'(orientation_sin)+ya*int'(orientation_cos)) >>> 7;
+                    bx = (xb*int'(orientation_cos)-yb*int'(orientation_sin)) >>> 7;
+                    by = (xb*int'(orientation_sin)+yb*int'(orientation_cos)) >>> 7;
+                    expected_descriptor[pair_id] =
+                        (reference_blur(int'(kp_x)+ax, int'(kp_y)+ay) >> 2) >
+                        (reference_blur(int'(kp_x)+bx, int'(kp_y)+by) >> 2);
+                end
+            end
+            #1;
+            if (!reset && dut.brief_valid[engine]) begin
+                if (!pending || cycle-accepted_cycle != 259)
+                    $fatal(1, "BRIEF completion timing mismatch");
+                if (dut.brief_descriptor[engine] !== expected_descriptor ||
+                    dut.brief_pos[engine] !== expected_pos || dut.brief_score[engine] !== expected_score)
+                    $fatal(1, "BRIEF descriptor/metadata mismatch engine %0d", engine);
+                pending = 0;
+            end
+        end
+    end
+
+    always @(posedge clk) begin
         #2;
         if (blur_win_valid && blur_win_pos == {10'd42, 9'd42}) begin
             if (!blur_win_inside) $fatal(1, "Blur patch unexpectedly outside");
@@ -117,12 +208,14 @@ module fast_detector_tb;
         end
     end
 
-    logic [11:0] angle_valid_pipe = 0;
-    logic [18:0] angle_tags [0:11];
-    int angle_codes [0:11], angle_quadrants [0:11];
+    logic [12:0] angle_valid_pipe = 0;
+    logic [18:0] angle_tags [0:12];
+    int angle_codes [0:12], angle_quadrants [0:12];
     longint signed mx, my;
     longint unsigned ax, ay, tangent [0:15];
     int local_sector, quadrant, orientations_checked = 0;
+    int expected_sin, expected_cos;
+    real reference_angle;
 
     initial begin
         for (int k = 0; k < 16; k++)
@@ -130,12 +223,12 @@ module fast_detector_tb;
     end
 
     always @(posedge clk) begin
-        for (int i = 11; i > 0; i--) begin
+        for (int i = 12; i > 0; i--) begin
             angle_tags[i] = angle_tags[i-1];
             angle_codes[i] = angle_codes[i-1];
             angle_quadrants[i] = angle_quadrants[i-1];
         end
-        angle_valid_pipe = reset ? '0 : {angle_valid_pipe[10:0], blur_win_valid && blur_win_inside};
+        angle_valid_pipe = reset ? '0 : {angle_valid_pipe[11:0], blur_win_valid && blur_win_inside};
         if (blur_win_valid && blur_win_inside) begin
             mx = 0;
             my = 0;
@@ -153,15 +246,25 @@ module fast_detector_tb;
                 if (ay != 0 && ax*tangent[k] <= ay*65536) local_sector = k;
             angle_tags[0] = blur_win_pos;
             angle_quadrants[0] = quadrant;
-            angle_codes[0] = quadrant*16 + ((quadrant % 2) ? 15-local_sector : local_sector);
+            angle_codes[0] = local_sector;
         end
         #1;
-        if (orientation_valid !== angle_valid_pipe[11]) $fatal(1, "Orientation valid/border mismatch");
+        if (orientation_valid !== angle_valid_pipe[12]) $fatal(1, "Orientation valid/border mismatch");
         if (orientation_valid) begin
-            if (orientation_pos !== angle_tags[11] || orientation_sector !== 6'(angle_codes[11]) ||
-                orientation_quadrant !== 2'(angle_quadrants[11]))
-                $fatal(1, "Orientation mismatch at tag %0d: sector %0d expected %0d", orientation_pos,orientation_sector,angle_codes[11]);
+            if (orientation_pos !== angle_tags[12] || orientation_sector !== 4'(angle_codes[12]) ||
+                orientation_quadrant !== 2'(angle_quadrants[12]))
+                $fatal(1, "Orientation mismatch at tag %0d: sector %0d expected %0d", orientation_pos,orientation_sector,angle_codes[12]);
             orientations_checked++;
+            reference_angle = (angle_codes[12]+0.5)*3.141592653589793/32.0;
+            expected_sin = $rtoi($sin(reference_angle)*128.0+0.5);
+            expected_cos = $rtoi($cos(reference_angle)*128.0+0.5);
+            if (expected_sin > 127) expected_sin = 127;
+            if (expected_cos > 127) expected_cos = 127;
+            if (angle_quadrants[12] >= 2) expected_sin = -expected_sin;
+            if (angle_quadrants[12] == 1 || angle_quadrants[12] == 2)
+                expected_cos = -expected_cos;
+            if (orientation_sin !== 8'(expected_sin) || orientation_cos !== 8'(expected_cos))
+                $fatal(1, "Orientation sine/cosine mismatch at tag %0d", orientation_pos);
         end
     end
 
@@ -241,8 +344,11 @@ module fast_detector_tb;
         frame_start <= 0;
 
         // Drain the pipeline.
-        repeat (50) @(posedge clk);
+        repeat (320) @(posedge clk);
         $fclose(fd);
+
+        if (expected_keypoints.size() != 0 || kp_valid)
+            $fatal(1, "Keypoint FIFO did not drain");
 
         if (frame_out != 2) begin
             $display("ERROR: %0d complete frames reported, expected 2", frame_out);

@@ -11,7 +11,7 @@ module quadrant_angle_compute #(
     input logic [TAG_W-1:0] in_tag,
 
     output logic [1:0] out_quadrant,
-    output logic [5:0] out_sector,  // Full-circle code; quadrants 1 and 3 reverse the index.
+    output logic [3:0] out_sector,  // Index from abs(m01)/abs(m10); quadrant supplies signs.
     output logic out_valid,
     output logic [TAG_W-1:0] out_tag
 );
@@ -84,7 +84,7 @@ module quadrant_angle_compute #(
                     if (comparisons[k]) selected_sector = 4'(k);
 
                 out_quadrant <= quadrant_pipe[2];
-                out_sector <= {quadrant_pipe[2], quadrant_pipe[2][0] ? (4'd15-selected_sector) : selected_sector};
+                out_sector <= selected_sector;
                 out_tag <= tag_pipe[2];
             end
         end

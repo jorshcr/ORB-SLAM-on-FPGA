@@ -3,6 +3,9 @@ set output [file join $root orb_test_output orb_[clock format [clock seconds] -f
 file mkdir $output
 set_part xc7a100tcsg324-1
 read_verilog -sv [file join $root orb_hardware rtl common line_window.sv]
+read_verilog -sv [file join $root orb_hardware rtl common fifo_sync.sv]
+read_verilog -sv [file join $root orb_hardware rtl common brief_pattern.sv]
+read_verilog -sv [file join $root orb_hardware rtl orb brief brief_engine.sv]
 read_verilog -sv [file join $root orb_hardware rtl orb fast fast_nms.sv]
 read_verilog -sv [file join $root orb_hardware rtl orb fast fast_score.sv]
 read_verilog -sv [file join $root orb_hardware rtl orb fast fast_top.sv]

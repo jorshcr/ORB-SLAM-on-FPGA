@@ -4,7 +4,7 @@ module quadrant_angle_compute_tb;
     logic signed [21:0] m10 = 0, m01 = 0;
     logic [18:0] in_tag = 0, out_tag;
     logic [1:0] out_quadrant;
-    logic [5:0] out_sector;
+    logic [3:0] out_sector;
     logic out_valid;
     logic [3:0] valid_pipe = 0;
     int quadrant_ref [0:3], sector_ref [0:3], angle_ref [0:3];
@@ -47,7 +47,7 @@ module quadrant_angle_compute_tb;
         #1;
         if (out_valid !== valid_pipe[3]) $fatal(1, "Four-stage valid mismatch");
         if (out_valid) begin
-            if (out_quadrant !== 2'(quadrant_ref[3]) || out_sector !== 6'(angle_ref[3]) || out_tag !== tag_ref[3])
+            if (out_quadrant !== 2'(quadrant_ref[3]) || out_sector !== 4'(sector_ref[3]) || out_tag !== tag_ref[3])
                 $fatal(1, "Output mismatch for tag %0d: q=%0d sector=%0d expected q=%0d sector=%0d",
                        out_tag,out_quadrant,out_sector,quadrant_ref[3],sector_ref[3]);
             checked++;

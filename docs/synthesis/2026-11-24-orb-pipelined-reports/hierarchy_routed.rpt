@@ -1,0 +1,70 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
+| Date         : Tue Nov 24 02:07:38 2026
+| Host         : tsjoshlaptop running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file C:/Users/joshr/projects/ORB-SLAM-on-FPGA/orb_test_output/orb_20261124_015819/hierarchy_routed.rpt
+| Design       : orb_pyramid_level
+| Device       : xc7a100tcsg324-1
+| Speed File   : -1
+| Design State : Routed
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-----------------------------------------+------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+|                 Instance                |               Module               | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs  | RAMB36 | RAMB18 | DSP Blocks |
++-----------------------------------------+------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+| orb_pyramid_level                       |                              (top) |      20017 |      19718 |       0 |  299 | 30736 |     10 |      2 |         36 |
+|   (orb_pyramid_level)                   |                              (top) |        173 |          1 |       0 |  172 |   509 |      0 |      0 |          0 |
+|   descriptor_window                     |        line_window__parameterized1 |        592 |        592 |       0 |    0 |   344 |      8 |      0 |          0 |
+|   fast                                  |                           fast_top |       1472 |       1460 |       0 |   12 |  1500 |      1 |      0 |          0 |
+|     nms                                 |                           fast_nms |         56 |         56 |       0 |    0 |   116 |      1 |      0 |          0 |
+|       (nms)                             |                           fast_nms |         20 |         20 |       0 |    0 |    28 |      0 |      0 |          0 |
+|       fast_score_window                 |        line_window__parameterized0 |         36 |         36 |       0 |    0 |    88 |      1 |      0 |          0 |
+|     score                               |                         fast_score |       1416 |       1404 |       0 |   12 |  1384 |      0 |      0 |          0 |
+|   g_brief[0].brief                      |                       brief_engine |       5304 |       5304 |       0 |    0 |  8687 |      0 |      0 |          0 |
+|     (g_brief[0].brief)                  |                       brief_engine |       5304 |       5304 |       0 |    0 |  8687 |      0 |      0 |          0 |
+|     pattern                             |                    brief_pattern_5 |          0 |          0 |       0 |    0 |     0 |      0 |      0 |          0 |
+|   g_brief[1].brief                      |                     brief_engine_0 |       5310 |       5310 |       0 |    0 |  8687 |      0 |      0 |          0 |
+|     (g_brief[1].brief)                  |                     brief_engine_0 |       5310 |       5310 |       0 |    0 |  8687 |      0 |      0 |          0 |
+|     pattern                             |                    brief_pattern_4 |          0 |          0 |       0 |    0 |     0 |      0 |      0 |          0 |
+|   g_brief[2].brief                      |                     brief_engine_1 |       5304 |       5304 |       0 |    0 |  8687 |      0 |      0 |          0 |
+|     (g_brief[2].brief)                  |                     brief_engine_1 |       5304 |       5304 |       0 |    0 |  8687 |      0 |      0 |          0 |
+|     pattern                             |                      brief_pattern |          0 |          0 |       0 |    0 |     0 |      0 |      0 |          0 |
+|   gaussian                              |                      gaussian_blur |        298 |        286 |       0 |   12 |   364 |      0 |      0 |         18 |
+|   keypoint_fifo                         |                          fifo_sync |         51 |         51 |       0 |    0 |    47 |      0 |      1 |          0 |
+|     (keypoint_fifo)                     |                          fifo_sync |          6 |          6 |       0 |    0 |     0 |      0 |      0 |          0 |
+|     storage                             |                      xpm_fifo_sync |         45 |         45 |       0 |    0 |    47 |      0 |      1 |          0 |
+|       xpm_fifo_base_inst                |                      xpm_fifo_base |         45 |         45 |       0 |    0 |    47 |      0 |      1 |          0 |
+|         (xpm_fifo_base_inst)            |                      xpm_fifo_base |          3 |          3 |       0 |    0 |     5 |      0 |      0 |          0 |
+|         gen_sdpram.xpm_memory_base_inst |                    xpm_memory_base |          0 |          0 |       0 |    0 |     0 |      0 |      1 |          0 |
+|         rdp_inst                        |   xpm_counter_updn__parameterized0 |          7 |          7 |       0 |    0 |     9 |      0 |      0 |          0 |
+|         rdpp1_inst                      |   xpm_counter_updn__parameterized1 |         12 |         12 |       0 |    0 |     9 |      0 |      0 |          0 |
+|         rst_d1_inst                     |                   xpm_fifo_reg_bit |          2 |          2 |       0 |    0 |     1 |      0 |      0 |          0 |
+|         wrp_inst                        | xpm_counter_updn__parameterized0_2 |          9 |          9 |       0 |    0 |     9 |      0 |      0 |          0 |
+|         wrpp1_inst                      | xpm_counter_updn__parameterized1_3 |         10 |         10 |       0 |    0 |     9 |      0 |      0 |          0 |
+|         xpm_fifo_rst_inst               |                       xpm_fifo_rst |          3 |          3 |       0 |    0 |     5 |      0 |      0 |          0 |
+|   orientation                           |                    orientation_top |       1239 |       1136 |       0 |  103 |  1471 |      0 |      0 |         18 |
+|     (orientation)                       |                    orientation_top |         47 |         47 |       0 |    0 |    36 |      0 |      0 |          0 |
+|     angle                               |             quadrant_angle_compute |        373 |        373 |       0 |    0 |   231 |      0 |      0 |         16 |
+|       (angle)                           |             quadrant_angle_compute |         16 |         16 |       0 |    0 |   172 |      0 |      0 |          1 |
+|       tangent_products                  |                       tan_multiply |        357 |        357 |       0 |    0 |    59 |      0 |      0 |         15 |
+|     moments                             |                     moment_compute |        819 |        716 |       0 |  103 |  1204 |      0 |      0 |          2 |
+|       (moments)                         |                     moment_compute |        128 |         36 |       0 |   92 |   182 |      0 |      0 |          0 |
+|       column_adder                      |                         column_sum |        296 |        296 |       0 |    0 |   396 |      0 |      0 |          0 |
+|       x_compute                         |                           x_moment |         65 |         65 |       0 |    0 |    59 |      0 |      0 |          2 |
+|       y_adder                           |                       y_moment_sum |        288 |        277 |       0 |   11 |   521 |      0 |      0 |          0 |
+|       y_compute                         |                           y_moment |         42 |         42 |       0 |    0 |    46 |      0 |      0 |          0 |
+|   pixel_window                          |                        line_window |        384 |        384 |       0 |    0 |   440 |      1 |      1 |          0 |
++-----------------------------------------+------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+
