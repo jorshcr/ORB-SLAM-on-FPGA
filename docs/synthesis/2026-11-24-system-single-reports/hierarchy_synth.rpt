@@ -1,0 +1,112 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
+| Date         : Tue Nov 24 15:31:56 2026
+| Host         : tsjoshlaptop running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file C:/Users/joshr/projects/ORB-SLAM-on-FPGA/orb_test_output/system_single_20261124_152851/hierarchy_synth.rpt
+| Design       : system_top
+| Device       : xc7a100tcsg324-1
+| Speed File   : -1
+| Design State : Synthesized
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++------------------------------------------------+-------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+|                    Instance                    |                Module               | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs  | RAMB36 | RAMB18 | DSP Blocks |
++------------------------------------------------+-------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+| system_top                                     |                               (top) |      19730 |      19362 |       0 |  368 | 30867 |     14 |      3 |         60 |
+|   (system_top)                                 |                               (top) |          0 |          0 |       0 |    0 |    44 |      0 |      0 |          0 |
+|   camera                                       |                  camera_capture_top |        185 |        185 |       0 |    0 |   339 |      0 |      1 |          0 |
+|     (camera)                                   |                  camera_capture_top |         50 |         50 |       0 |    0 |   115 |      0 |      0 |          0 |
+|     camera_fifo                                |                      xpm_fifo_async |        135 |        135 |       0 |    0 |   224 |      0 |      1 |          0 |
+|       (camera_fifo)                            |                      xpm_fifo_async |          0 |          0 |       0 |    0 |     0 |      0 |      0 |          0 |
+|       gnuram_async_fifo.xpm_fifo_base_inst     |       xpm_fifo_base__parameterized0 |        135 |        135 |       0 |    0 |   224 |      0 |      1 |          0 |
+|         (gnuram_async_fifo.xpm_fifo_base_inst) |       xpm_fifo_base__parameterized0 |          3 |          3 |       0 |    0 |     5 |      0 |      0 |          0 |
+|         gen_cdc_pntr.rd_pntr_cdc_dc_inst       |        xpm_cdc_gray__parameterized1 |         14 |         14 |       0 |    0 |    30 |      0 |      0 |          0 |
+|         gen_cdc_pntr.rd_pntr_cdc_inst          |                        xpm_cdc_gray |         12 |         12 |       0 |    0 |    27 |      0 |      0 |          0 |
+|         gen_cdc_pntr.rpw_gray_reg              |                    xpm_fifo_reg_vec |          0 |          0 |       0 |    0 |     9 |      0 |      0 |          0 |
+|         gen_cdc_pntr.wpr_gray_reg              |                 xpm_fifo_reg_vec_10 |          0 |          0 |       0 |    0 |     9 |      0 |      0 |          0 |
+|         gen_cdc_pntr.wr_pntr_cdc_dc_inst       |        xpm_cdc_gray__parameterized0 |         14 |         14 |       0 |    0 |    50 |      0 |      0 |          0 |
+|         gen_cdc_pntr.wr_pntr_cdc_inst          |                     xpm_cdc_gray__2 |         12 |         12 |       0 |    0 |    27 |      0 |      0 |          0 |
+|         gen_fwft.rdpp1_inst                    |                    xpm_counter_updn |         12 |         12 |       0 |    0 |     2 |      0 |      0 |          0 |
+|         gen_sdpram.xpm_memory_base_inst        |     xpm_memory_base__parameterized0 |          0 |          0 |       0 |    0 |     0 |      0 |      1 |          0 |
+|         rdp_inst                               | xpm_counter_updn__parameterized0_11 |         11 |         11 |       0 |    0 |    10 |      0 |      0 |          0 |
+|         rdpp1_inst                             | xpm_counter_updn__parameterized1_12 |         12 |         12 |       0 |    0 |     9 |      0 |      0 |          0 |
+|         rst_d1_inst                            |                 xpm_fifo_reg_bit_13 |          1 |          1 |       0 |    0 |     1 |      0 |      0 |          0 |
+|         wrp_inst                               | xpm_counter_updn__parameterized0_14 |          7 |          7 |       0 |    0 |    10 |      0 |      0 |          0 |
+|         wrpp1_inst                             | xpm_counter_updn__parameterized1_15 |          9 |          9 |       0 |    0 |     9 |      0 |      0 |          0 |
+|         wrpp2_inst                             |    xpm_counter_updn__parameterized2 |         10 |         10 |       0 |    0 |     9 |      0 |      0 |          0 |
+|         xpm_fifo_rst_inst                      |        xpm_fifo_rst__parameterized0 |         18 |         18 |       0 |    0 |    17 |      0 |      0 |          0 |
+|           (xpm_fifo_rst_inst)                  |        xpm_fifo_rst__parameterized0 |         18 |         18 |       0 |    0 |    13 |      0 |      0 |          0 |
+|           gen_rst_ic.rrst_wr_inst              |                    xpm_cdc_sync_rst |          0 |          0 |       0 |    0 |     2 |      0 |      0 |          0 |
+|           gen_rst_ic.wrst_rd_inst              |                 xpm_cdc_sync_rst__2 |          0 |          0 |       0 |    0 |     2 |      0 |      0 |          0 |
+|   g_orb[0].orb                                 |                   orb_pyramid_level |      19212 |      18844 |       0 |  368 | 30163 |     10 |      2 |         60 |
+|     (g_orb[0].orb)                             |                   orb_pyramid_level |        225 |          2 |       0 |  223 |   437 |      0 |      0 |          0 |
+|     descriptor_window                          |         line_window__parameterized1 |        609 |        609 |       0 |    0 |   344 |      8 |      0 |          0 |
+|     fast                                       |                            fast_top |       1487 |       1471 |       0 |   16 |  1500 |      1 |      0 |          0 |
+|       nms                                      |                            fast_nms |         67 |         67 |       0 |    0 |   116 |      1 |      0 |          0 |
+|         (nms)                                  |                            fast_nms |         31 |         31 |       0 |    0 |    28 |      0 |      0 |          0 |
+|         fast_score_window                      |         line_window__parameterized0 |         36 |         36 |       0 |    0 |    88 |      1 |      0 |          0 |
+|       score                                    |                          fast_score |       1420 |       1404 |       0 |   16 |  1384 |      0 |      0 |          0 |
+|     g_brief[0].brief                           |                        brief_engine |       4893 |       4893 |       0 |    0 |  8529 |      0 |      0 |          8 |
+|       (g_brief[0].brief)                       |                        brief_engine |       4893 |       4893 |       0 |    0 |  8529 |      0 |      0 |          8 |
+|       pattern                                  |                     brief_pattern_9 |          0 |          0 |       0 |    0 |     0 |      0 |      0 |          0 |
+|     g_brief[1].brief                           |                      brief_engine_2 |       4894 |       4894 |       0 |    0 |  8529 |      0 |      0 |          8 |
+|       (g_brief[1].brief)                       |                      brief_engine_2 |       4894 |       4894 |       0 |    0 |  8529 |      0 |      0 |          8 |
+|       pattern                                  |                     brief_pattern_8 |          0 |          0 |       0 |    0 |     0 |      0 |      0 |          0 |
+|     g_brief[2].brief                           |                      brief_engine_3 |       4893 |       4893 |       0 |    0 |  8529 |      0 |      0 |          8 |
+|       (g_brief[2].brief)                       |                      brief_engine_3 |       4893 |       4893 |       0 |    0 |  8529 |      0 |      0 |          8 |
+|       pattern                                  |                       brief_pattern |          0 |          0 |       0 |    0 |     0 |      0 |      0 |          0 |
+|     gaussian                                   |                       gaussian_blur |        305 |        285 |       0 |   20 |   357 |      0 |      0 |         18 |
+|     keypoint_fifo                              |                           fifo_sync |         51 |         51 |       0 |    0 |    47 |      0 |      1 |          0 |
+|       (keypoint_fifo)                          |                           fifo_sync |          5 |          5 |       0 |    0 |     0 |      0 |      0 |          0 |
+|       storage                                  |                       xpm_fifo_sync |         46 |         46 |       0 |    0 |    47 |      0 |      1 |          0 |
+|         (storage)                              |                       xpm_fifo_sync |          0 |          0 |       0 |    0 |     0 |      0 |      0 |          0 |
+|         xpm_fifo_base_inst                     |                       xpm_fifo_base |         46 |         46 |       0 |    0 |    47 |      0 |      1 |          0 |
+|           (xpm_fifo_base_inst)                 |                       xpm_fifo_base |          3 |          3 |       0 |    0 |     5 |      0 |      0 |          0 |
+|           gen_sdpram.xpm_memory_base_inst      |                     xpm_memory_base |          0 |          0 |       0 |    0 |     0 |      0 |      1 |          0 |
+|           rdp_inst                             |    xpm_counter_updn__parameterized0 |          7 |          7 |       0 |    0 |     9 |      0 |      0 |          0 |
+|           rdpp1_inst                           |    xpm_counter_updn__parameterized1 |         12 |         12 |       0 |    0 |     9 |      0 |      0 |          0 |
+|           rst_d1_inst                          |                  xpm_fifo_reg_bit_4 |          3 |          3 |       0 |    0 |     1 |      0 |      0 |          0 |
+|           wrp_inst                             |  xpm_counter_updn__parameterized0_5 |          9 |          9 |       0 |    0 |     9 |      0 |      0 |          0 |
+|           wrpp1_inst                           |  xpm_counter_updn__parameterized1_6 |         10 |         10 |       0 |    0 |     9 |      0 |      0 |          0 |
+|           xpm_fifo_rst_inst                    |                      xpm_fifo_rst_7 |          2 |          2 |       0 |    0 |     5 |      0 |      0 |          0 |
+|     orientation                                |                     orientation_top |       1279 |       1170 |       0 |  109 |  1447 |      0 |      0 |         18 |
+|       (orientation)                            |                     orientation_top |         78 |         78 |       0 |    0 |    20 |      0 |      0 |          0 |
+|       angle                                    |              quadrant_angle_compute |        373 |        373 |       0 |    0 |   259 |      0 |      0 |         16 |
+|         (angle)                                |              quadrant_angle_compute |         16 |         16 |       0 |    0 |   200 |      0 |      0 |          1 |
+|         tangent_products                       |                        tan_multiply |        357 |        357 |       0 |    0 |    59 |      0 |      0 |         15 |
+|       moments                                  |                      moment_compute |        828 |        719 |       0 |  109 |  1168 |      0 |      0 |          2 |
+|         (moments)                              |                      moment_compute |        128 |         36 |       0 |   92 |   146 |      0 |      0 |          0 |
+|         column_adder                           |                          column_sum |        297 |        297 |       0 |    0 |   396 |      0 |      0 |          0 |
+|         x_compute                              |                            x_moment |         66 |         66 |       0 |    0 |    59 |      0 |      0 |          2 |
+|         y_adder                                |                        y_moment_sum |        294 |        277 |       0 |   17 |   521 |      0 |      0 |          0 |
+|         y_compute                              |                            y_moment |         43 |         43 |       0 |    0 |    46 |      0 |      0 |          0 |
+|     pixel_window                               |                         line_window |        384 |        384 |       0 |    0 |   439 |      1 |      1 |          0 |
+|     result_arbiter                             |                 round_robin_arbiter |        301 |        301 |       0 |    0 |     5 |      0 |      0 |          0 |
+|   results                                      |                   descriptor_output |        333 |        333 |       0 |    0 |   321 |      4 |      0 |          0 |
+|     (results)                                  |                   descriptor_output |          0 |          0 |       0 |    0 |   278 |      0 |      0 |          0 |
+|     descriptor_fifo                            |           fifo_sync__parameterized0 |        333 |        333 |       0 |    0 |    43 |      4 |      0 |          0 |
+|       (descriptor_fifo)                        |           fifo_sync__parameterized0 |        282 |        282 |       0 |    0 |     0 |      0 |      0 |          0 |
+|       storage                                  |       xpm_fifo_sync__parameterized0 |         51 |         51 |       0 |    0 |    43 |      4 |      0 |          0 |
+|         (storage)                              |       xpm_fifo_sync__parameterized0 |          0 |          0 |       0 |    0 |     0 |      0 |      0 |          0 |
+|         xpm_fifo_base_inst                     |       xpm_fifo_base__parameterized1 |         51 |         51 |       0 |    0 |    43 |      4 |      0 |          0 |
+|           (xpm_fifo_base_inst)                 |       xpm_fifo_base__parameterized1 |          3 |          3 |       0 |    0 |     5 |      0 |      0 |          0 |
+|           gen_sdpram.xpm_memory_base_inst      |     xpm_memory_base__parameterized1 |          0 |          0 |       0 |    0 |     0 |      4 |      0 |          0 |
+|           rdp_inst                             |    xpm_counter_updn__parameterized3 |         15 |         15 |       0 |    0 |     8 |      0 |      0 |          0 |
+|           rdpp1_inst                           |    xpm_counter_updn__parameterized4 |         10 |         10 |       0 |    0 |     8 |      0 |      0 |          0 |
+|           rst_d1_inst                          |                    xpm_fifo_reg_bit |          0 |          0 |       0 |    0 |     1 |      0 |      0 |          0 |
+|           wrp_inst                             |  xpm_counter_updn__parameterized3_0 |         12 |         12 |       0 |    0 |     8 |      0 |      0 |          0 |
+|           wrpp1_inst                           |  xpm_counter_updn__parameterized4_1 |          8 |          8 |       0 |    0 |     8 |      0 |      0 |          0 |
+|           xpm_fifo_rst_inst                    |                        xpm_fifo_rst |          3 |          3 |       0 |    0 |     5 |      0 |      0 |          0 |
++------------------------------------------------+-------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+
+

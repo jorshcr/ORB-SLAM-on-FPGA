@@ -1,0 +1,22 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
+| Date         : Tue Nov 24 16:44:37 2026
+| Host         : tsjoshlaptop running 64-bit major release  (build 9200)
+| Command      : report_cdc -file C:/Users/joshr/projects/ORB-SLAM-on-FPGA/orb_test_output/board_20261124_163725/cdc.rpt
+| Design       : orb_board_top
+| Device       : 7a100t-csg324
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+CDC Report
+
+Severity  Source Clock      Destination Clock  CDC Type                 Exceptions           Endpoints  Safe  Unsafe  Unknown  No ASYNC_REG  
+--------  ----------------  -----------------  -----------------------  -------------------  ---------  ----  ------  -------  ------------  
+Critical  input port clock  camera_xclk        No Common Primary Clock  False Path                   1     0       1        0             0  
+Critical  input port clock  sys_clk            No Common Primary Clock  False Path               30537     8     669    29860             8  
+Info      input port clock  camera_pclk        No Common Primary Clock  False Path                   1     1       0        0             0  
+Info      sys_clk           camera_pclk        No Common Primary Clock  Asynch Clock Groups          1     1       0        0             0  
+Info      camera_pclk       sys_clk            No Common Primary Clock  Asynch Clock Groups          1     1       0        0             0  
+
