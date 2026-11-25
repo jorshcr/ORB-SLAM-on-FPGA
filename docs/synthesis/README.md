@@ -12,6 +12,8 @@ Dated snapshots record the tested design, constraints, resource use, timing resu
 | [2026-11-24, board + orientation](2026-11-24-board-orientation.md) | Nexys/OV7670 board wrapper + descriptor angle | 100 MHz | 19,777 | 32,164 | 15.5 | 60 | -0.169 ns | +0.023 ns |
 | [2026-11-24, board closed](2026-11-24-board-closed.md) | Single octave, post-route optimization | 100 MHz | 19,777 | 32,164 | 15.5 | 60 | +0.055 ns | +0.023 ns |
 | [2026-11-24, three levels](2026-11-24-board-three-level.md) | 3 ORBs + 2 scalers; synthesis counts, placement failed | 100 MHz target | 60,349 | 96,399 | 33.5 | 188 | unavailable | unavailable |
+| [2026-11-24, 3/3/2 BRIEF](2026-11-24-board-332.md) | 3 ORBs, 8 BRIEFs; synthesis counts, placement failed | 100 MHz target | 55,329 | 87,387 | 33.5 | 180 | unavailable | unavailable |
+| [2026-11-24, two levels](2026-11-24-board-two-level.md) | 2 ORBs, 6 BRIEFs + scaler; routed | 100 MHz | 39,556 | 64,298 | 27 | 124 | +0.003 ns | +0.007 ns |
 
 For future runs, add a dated Markdown snapshot, preserve the reports in a matching subfolder, and append a row here.
 

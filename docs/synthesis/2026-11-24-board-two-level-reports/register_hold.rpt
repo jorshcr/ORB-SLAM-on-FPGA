@@ -1,0 +1,526 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
+| Date         : Tue Nov 24 17:41:42 2026
+| Host         : tsjoshlaptop running 64-bit major release  (build 9200)
+| Command      : report_timing -delay_type min -from [all_registers] -to [all_registers] -max_paths 10 -file C:/Users/joshr/projects/ORB-SLAM-on-FPGA/orb_test_output/board_2level_last3brief_20261124_170744/register_hold.rpt
+| Design       : orb_board_top
+| Device       : 7a100t-csg324
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (VIOLATED) :        -0.071ns  (arrival time - required time)
+  Source:                 system/g_orb[1].orb/g_brief[1].brief/window_reg[7][2][1]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            system/g_orb[1].orb/g_brief[1].brief/window_reg[7][1][1]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.260ns  (logic 0.141ns (54.222%)  route 0.119ns (45.778%))
+  Logic Levels:           0  
+  Clock Path Skew:        1.896ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.159ns
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.262ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    SLICE_X77Y96         FDRE                         0.000     0.000 r  system/g_orb[1].orb/g_brief[1].brief/window_reg[7][2][1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X77Y96         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  system/g_orb[1].orb/g_brief[1].brief/window_reg[7][2][1]/Q
+                         net (fo=3, routed)           0.119     0.260    system/g_orb[1].orb/g_brief[1].brief/window_reg[7][2]_6266[1]
+    SLICE_X76Y95         FDRE                                         r  system/g_orb[1].orb/g_brief[1].brief/window_reg[7][1][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.699     1.136    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.029     1.165 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.033     1.198    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.029     1.227 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.033     1.260    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.029     1.289 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=65132, routed)       0.870     2.159    system/g_orb[1].orb/g_brief[1].brief/CLK100MHZ_IBUF_BUFG
+    SLICE_X76Y95         FDRE                                         r  system/g_orb[1].orb/g_brief[1].brief/window_reg[7][1][1]/C
+                         clock pessimism             -0.262     1.896    
+    SLICE_X76Y95         FDRE (Hold_fdre_C_D)         0.063     1.959    system/g_orb[1].orb/g_brief[1].brief/window_reg[7][1][1]
+  -------------------------------------------------------------------
+                         required time                         -1.959    
+                         arrival time                           1.888    
+  -------------------------------------------------------------------
+                         slack                                 -0.071    
+
+Slack (VIOLATED) :        -0.058ns  (arrival time - required time)
+  Source:                 system/g_orb[1].orb/g_brief[2].brief/window_reg[3][35][5]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            system/g_orb[1].orb/g_brief[2].brief/window_reg[3][34][5]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.256ns  (logic 0.141ns (55.057%)  route 0.115ns (44.943%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.267ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.198ns
+    Source Clock Delay      (SCD):    1.668ns
+    Clock Pessimism Removal (CPR):    0.262ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.644     0.894    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.026     0.920 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.030     0.950    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.026     0.976 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.030     1.006    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.026     1.032 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=65132, routed)       0.636     1.668    system/g_orb[1].orb/g_brief[2].brief/CLK100MHZ_IBUF_BUFG
+    SLICE_X9Y33          FDRE                                         r  system/g_orb[1].orb/g_brief[2].brief/window_reg[3][35][5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X9Y33          FDRE (Prop_fdre_C_Q)         0.141     1.809 r  system/g_orb[1].orb/g_brief[2].brief/window_reg[3][35][5]/Q
+                         net (fo=3, routed)           0.115     1.924    system/g_orb[1].orb/g_brief[2].brief/window_reg[3][35]_7526[5]
+    SLICE_X9Y33          FDRE                                         r  system/g_orb[1].orb/g_brief[2].brief/window_reg[3][34][5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    SLICE_X9Y33          FDRE                         0.000     0.000 r  system/g_orb[1].orb/g_brief[2].brief/window_reg[3][34][5]/C
+                         clock pessimism             -0.262    -0.262    
+    SLICE_X9Y33          FDRE (Hold_fdre_C_D)         0.047    -0.215    system/g_orb[1].orb/g_brief[2].brief/window_reg[3][34][5]
+  -------------------------------------------------------------------
+                         required time                         -1.982    
+                         arrival time                           1.924    
+  -------------------------------------------------------------------
+                         slack                                 -0.058    
+
+Slack (VIOLATED) :        -0.006ns  (arrival time - required time)
+  Source:                 system/g_orb[1].orb/g_brief[1].brief/window_reg[20][21][2]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            system/g_orb[1].orb/g_brief[1].brief/window_reg[20][20][2]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.326ns  (logic 0.164ns (50.268%)  route 0.162ns (49.731%))
+  Logic Levels:           0  
+  Clock Path Skew:        1.946ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.209ns
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.262ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    SLICE_X80Y22         FDRE                         0.000     0.000 r  system/g_orb[1].orb/g_brief[1].brief/window_reg[20][21][2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X80Y22         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  system/g_orb[1].orb/g_brief[1].brief/window_reg[20][21][2]/Q
+                         net (fo=3, routed)           0.162     0.326    system/g_orb[1].orb/g_brief[1].brief/window_reg[20][21]_6741[2]
+    SLICE_X80Y20         FDRE                                         r  system/g_orb[1].orb/g_brief[1].brief/window_reg[20][20][2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.699     1.136    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.029     1.165 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.033     1.198    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.029     1.227 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.033     1.260    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.029     1.289 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=65132, routed)       0.920     2.209    system/g_orb[1].orb/g_brief[1].brief/CLK100MHZ_IBUF_BUFG
+    SLICE_X80Y20         FDRE                                         r  system/g_orb[1].orb/g_brief[1].brief/window_reg[20][20][2]/C
+                         clock pessimism             -0.262     1.946    
+    SLICE_X80Y20         FDRE (Hold_fdre_C_D)         0.063     2.009    system/g_orb[1].orb/g_brief[1].brief/window_reg[20][20][2]
+  -------------------------------------------------------------------
+                         required time                         -2.009    
+                         arrival time                           2.003    
+  -------------------------------------------------------------------
+                         slack                                 -0.006    
+
+Slack (MET) :             0.004ns  (arrival time - required time)
+  Source:                 system/g_orb[1].orb/g_brief[2].brief/window_reg[3][34][5]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            system/g_orb[1].orb/g_brief[2].brief/window_reg[3][33][5]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.335ns  (logic 0.141ns (42.097%)  route 0.194ns (57.903%))
+  Logic Levels:           0  
+  Clock Path Skew:        1.933ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.196ns
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.262ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    SLICE_X9Y33          FDRE                         0.000     0.000 r  system/g_orb[1].orb/g_brief[2].brief/window_reg[3][34][5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X9Y33          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  system/g_orb[1].orb/g_brief[2].brief/window_reg[3][34][5]/Q
+                         net (fo=3, routed)           0.194     0.335    system/g_orb[1].orb/g_brief[2].brief/window_reg[3][34]_7527[5]
+    SLICE_X9Y31          FDRE                                         r  system/g_orb[1].orb/g_brief[2].brief/window_reg[3][33][5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.699     1.136    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.029     1.165 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.033     1.198    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.029     1.227 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.033     1.260    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.029     1.289 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=65132, routed)       0.907     2.196    system/g_orb[1].orb/g_brief[2].brief/CLK100MHZ_IBUF_BUFG
+    SLICE_X9Y31          FDRE                                         r  system/g_orb[1].orb/g_brief[2].brief/window_reg[3][33][5]/C
+                         clock pessimism             -0.262     1.933    
+    SLICE_X9Y31          FDRE (Hold_fdre_C_D)         0.066     1.999    system/g_orb[1].orb/g_brief[2].brief/window_reg[3][33][5]
+  -------------------------------------------------------------------
+                         required time                         -1.999    
+                         arrival time                           2.003    
+  -------------------------------------------------------------------
+                         slack                                  0.004    
+
+Slack (MET) :             0.007ns  (arrival time - required time)
+  Source:                 system/g_orb[0].orb/orientation/out_sector_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            system/g_orb[0].orb/g_brief[2].brief/angle_saved_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.419ns  (logic 0.141ns (33.668%)  route 0.278ns (66.332%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.342ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.157ns
+    Source Clock Delay      (SCD):    1.563ns
+    Clock Pessimism Removal (CPR):    0.251ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.644     0.894    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.026     0.920 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.030     0.950    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.026     0.976 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.588     1.563    system/g_orb[0].orb/orientation/CLK100MHZ_IBUF_BUFG_repN_alias
+    SLICE_X77Y112        FDRE                                         r  system/g_orb[0].orb/orientation/out_sector_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X77Y112        FDRE (Prop_fdre_C_Q)         0.141     1.704 r  system/g_orb[0].orb/orientation/out_sector_reg[0]/Q
+                         net (fo=3, routed)           0.278     1.982    system/g_orb[0].orb/g_brief[2].brief/angle_saved_reg[3]_0[0]
+    SLICE_X81Y106        FDRE                                         r  system/g_orb[0].orb/g_brief[2].brief/angle_saved_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.699     1.136    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.029     1.165 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.033     1.198    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.029     1.227 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.033     1.260    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.029     1.289 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=65132, routed)       0.867     2.157    system/g_orb[0].orb/g_brief[2].brief/CLK100MHZ_IBUF_BUFG
+    SLICE_X81Y106        FDRE                                         r  system/g_orb[0].orb/g_brief[2].brief/angle_saved_reg[0]/C
+                         clock pessimism             -0.251     1.905    
+    SLICE_X81Y106        FDRE (Hold_fdre_C_D)         0.070     1.975    system/g_orb[0].orb/g_brief[2].brief/angle_saved_reg[0]
+  -------------------------------------------------------------------
+                         required time                         -1.975    
+                         arrival time                           1.982    
+  -------------------------------------------------------------------
+                         slack                                  0.007    
+
+Slack (MET) :             0.011ns  (arrival time - required time)
+  Source:                 system/g_orb[0].orb/orientation/out_sector_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            system/g_orb[0].orb/g_brief[2].brief/angle_saved_reg[1]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.419ns  (logic 0.141ns (33.673%)  route 0.278ns (66.327%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.342ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.157ns
+    Source Clock Delay      (SCD):    1.563ns
+    Clock Pessimism Removal (CPR):    0.251ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.644     0.894    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.026     0.920 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.030     0.950    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.026     0.976 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.588     1.563    system/g_orb[0].orb/orientation/CLK100MHZ_IBUF_BUFG_repN_alias
+    SLICE_X77Y112        FDRE                                         r  system/g_orb[0].orb/orientation/out_sector_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X77Y112        FDRE (Prop_fdre_C_Q)         0.141     1.704 r  system/g_orb[0].orb/orientation/out_sector_reg[1]/Q
+                         net (fo=3, routed)           0.278     1.982    system/g_orb[0].orb/g_brief[2].brief/angle_saved_reg[3]_0[1]
+    SLICE_X81Y106        FDRE                                         r  system/g_orb[0].orb/g_brief[2].brief/angle_saved_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.699     1.136    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.029     1.165 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.033     1.198    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.029     1.227 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.033     1.260    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.029     1.289 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=65132, routed)       0.867     2.157    system/g_orb[0].orb/g_brief[2].brief/CLK100MHZ_IBUF_BUFG
+    SLICE_X81Y106        FDRE                                         r  system/g_orb[0].orb/g_brief[2].brief/angle_saved_reg[1]/C
+                         clock pessimism             -0.251     1.905    
+    SLICE_X81Y106        FDRE (Hold_fdre_C_D)         0.066     1.971    system/g_orb[0].orb/g_brief[2].brief/angle_saved_reg[1]
+  -------------------------------------------------------------------
+                         required time                         -1.971    
+                         arrival time                           1.982    
+  -------------------------------------------------------------------
+                         slack                                  0.011    
+
+Slack (MET) :             0.016ns  (arrival time - required time)
+  Source:                 system/g_orb[1].orb/brief_col_delayed_reg[0][20][0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            system/g_orb[1].orb/brief_col_delayed_reg[10][20][0]_srl10/D
+                            (rising edge-triggered cell SRL16E clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.328ns  (logic 0.128ns (38.991%)  route 0.200ns (61.009%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.264ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.182ns
+    Source Clock Delay      (SCD):    1.652ns
+    Clock Pessimism Removal (CPR):    0.266ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.644     0.894    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.026     0.920 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.030     0.950    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.026     0.976 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.030     1.006    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.026     1.032 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=65132, routed)       0.620     1.652    system/g_orb[1].orb/CLK100MHZ_IBUF_BUFG
+    SLICE_X55Y22         FDRE                                         r  system/g_orb[1].orb/brief_col_delayed_reg[0][20][0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X55Y22         FDRE (Prop_fdre_C_Q)         0.128     1.780 r  system/g_orb[1].orb/brief_col_delayed_reg[0][20][0]/Q
+                         net (fo=1, routed)           0.200     1.980    system/g_orb[1].orb/brief_col_delayed_reg[0][20]_8989[0]
+    SLICE_X50Y21         SRL16E                                       r  system/g_orb[1].orb/brief_col_delayed_reg[10][20][0]_srl10/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.699     1.136    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.029     1.165 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.033     1.198    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.029     1.227 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.033     1.260    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.029     1.289 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=65132, routed)       0.893     2.182    system/g_orb[1].orb/CLK100MHZ_IBUF_BUFG
+    SLICE_X50Y21         SRL16E                                       r  system/g_orb[1].orb/brief_col_delayed_reg[10][20][0]_srl10/CLK
+                         clock pessimism             -0.266     1.916    
+    SLICE_X50Y21         SRL16E (Hold_srl16e_CLK_D)
+                                                      0.048     1.964    system/g_orb[1].orb/brief_col_delayed_reg[10][20][0]_srl10
+  -------------------------------------------------------------------
+                         required time                         -1.964    
+                         arrival time                           1.980    
+  -------------------------------------------------------------------
+                         slack                                  0.016    
+
+Slack (MET) :             0.022ns  (arrival time - required time)
+  Source:                 system/g_orb[1].orb/brief_col_delayed_reg[0][20][2]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            system/g_orb[1].orb/brief_col_delayed_reg[10][20][2]_srl10/D
+                            (rising edge-triggered cell SRL16E clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.327ns  (logic 0.128ns (39.086%)  route 0.199ns (60.914%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.264ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.182ns
+    Source Clock Delay      (SCD):    1.652ns
+    Clock Pessimism Removal (CPR):    0.266ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.644     0.894    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.026     0.920 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.030     0.950    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.026     0.976 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.030     1.006    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.026     1.032 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=65132, routed)       0.620     1.652    system/g_orb[1].orb/CLK100MHZ_IBUF_BUFG
+    SLICE_X55Y22         FDRE                                         r  system/g_orb[1].orb/brief_col_delayed_reg[0][20][2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X55Y22         FDRE (Prop_fdre_C_Q)         0.128     1.780 r  system/g_orb[1].orb/brief_col_delayed_reg[0][20][2]/Q
+                         net (fo=1, routed)           0.199     1.979    system/g_orb[1].orb/brief_col_delayed_reg[0][20]_8989[2]
+    SLICE_X50Y21         SRL16E                                       r  system/g_orb[1].orb/brief_col_delayed_reg[10][20][2]_srl10/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.699     1.136    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.029     1.165 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.033     1.198    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.029     1.227 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.033     1.260    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.029     1.289 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=65132, routed)       0.893     2.182    system/g_orb[1].orb/CLK100MHZ_IBUF_BUFG
+    SLICE_X50Y21         SRL16E                                       r  system/g_orb[1].orb/brief_col_delayed_reg[10][20][2]_srl10/CLK
+                         clock pessimism             -0.266     1.916    
+    SLICE_X50Y21         SRL16E (Hold_srl16e_CLK_D)
+                                                      0.041     1.957    system/g_orb[1].orb/brief_col_delayed_reg[10][20][2]_srl10
+  -------------------------------------------------------------------
+                         required time                         -1.957    
+                         arrival time                           1.979    
+  -------------------------------------------------------------------
+                         slack                                  0.022    
+
+Slack (MET) :             0.024ns  (arrival time - required time)
+  Source:                 system/g_orb[1].orb/g_brief[1].brief/window_reg[36][34][0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            system/g_orb[1].orb/g_brief[1].brief/window_reg[36][33][0]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.355ns  (logic 0.141ns (39.703%)  route 0.214ns (60.297%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.265ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.121ns
+    Source Clock Delay      (SCD):    1.598ns
+    Clock Pessimism Removal (CPR):    0.257ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.644     0.894    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.026     0.920 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.030     0.950    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.026     0.976 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.030     1.006    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.026     1.032 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=65132, routed)       0.567     1.598    system/g_orb[1].orb/g_brief[1].brief/CLK100MHZ_IBUF_BUFG
+    SLICE_X59Y99         FDRE                                         r  system/g_orb[1].orb/g_brief[1].brief/window_reg[36][34][0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X59Y99         FDRE (Prop_fdre_C_Q)         0.141     1.739 r  system/g_orb[1].orb/g_brief[1].brief/window_reg[36][34][0]/Q
+                         net (fo=3, routed)           0.214     1.953    system/g_orb[1].orb/g_brief[1].brief/window_reg[36][34]_7336[0]
+    SLICE_X59Y100        FDRE                                         r  system/g_orb[1].orb/g_brief[1].brief/window_reg[36][33][0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.699     1.136    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.029     1.165 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.033     1.198    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.029     1.227 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.033     1.260    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.029     1.289 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=65132, routed)       0.832     2.121    system/g_orb[1].orb/g_brief[1].brief/CLK100MHZ_IBUF_BUFG
+    SLICE_X59Y100        FDRE                                         r  system/g_orb[1].orb/g_brief[1].brief/window_reg[36][33][0]/C
+                         clock pessimism             -0.257     1.863    
+    SLICE_X59Y100        FDRE (Hold_fdre_C_D)         0.066     1.929    system/g_orb[1].orb/g_brief[1].brief/window_reg[36][33][0]
+  -------------------------------------------------------------------
+                         required time                         -1.929    
+                         arrival time                           1.953    
+  -------------------------------------------------------------------
+                         slack                                  0.024    
+
+Slack (MET) :             0.026ns  (arrival time - required time)
+  Source:                 system/g_orb[1].orb/brief_col_delayed_reg[0][20][4]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            system/g_orb[1].orb/brief_col_delayed_reg[10][20][4]_srl10/D
+                            (rising edge-triggered cell SRL16E clocked by sys_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.405ns  (logic 0.164ns (40.492%)  route 0.241ns (59.508%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.262ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.182ns
+    Source Clock Delay      (SCD):    1.654ns
+    Clock Pessimism Removal (CPR):    0.266ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.644     0.894    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.026     0.920 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.030     0.950    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.026     0.976 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.030     1.006    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.026     1.032 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=65132, routed)       0.622     1.654    system/g_orb[1].orb/CLK100MHZ_IBUF_BUFG
+    SLICE_X58Y21         FDRE                                         r  system/g_orb[1].orb/brief_col_delayed_reg[0][20][4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X58Y21         FDRE (Prop_fdre_C_Q)         0.164     1.818 r  system/g_orb[1].orb/brief_col_delayed_reg[0][20][4]/Q
+                         net (fo=1, routed)           0.241     2.059    system/g_orb[1].orb/brief_col_delayed_reg[0][20]_8989[4]
+    SLICE_X50Y21         SRL16E                                       r  system/g_orb[1].orb/brief_col_delayed_reg[10][20][4]_srl10/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           0.699     1.136    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.029     1.165 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=14, routed)          0.033     1.198    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.029     1.227 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=14, routed)          0.033     1.260    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.029     1.289 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=65132, routed)       0.893     2.182    system/g_orb[1].orb/CLK100MHZ_IBUF_BUFG
+    SLICE_X50Y21         SRL16E                                       r  system/g_orb[1].orb/brief_col_delayed_reg[10][20][4]_srl10/CLK
+                         clock pessimism             -0.266     1.916    
+    SLICE_X50Y21         SRL16E (Hold_srl16e_CLK_D)
+                                                      0.117     2.033    system/g_orb[1].orb/brief_col_delayed_reg[10][20][4]_srl10
+  -------------------------------------------------------------------
+                         required time                         -2.033    
+                         arrival time                           2.059    
+  -------------------------------------------------------------------
+                         slack                                  0.026    
+
+
+
+

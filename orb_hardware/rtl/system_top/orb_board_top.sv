@@ -1,7 +1,8 @@
 `timescale 1ns / 1ps
 
 module orb_board_top #(
-    parameter int ORB_LEVELS = 1
+    parameter int ORB_LEVELS = 2,
+    parameter int LAST_LEVEL_BRIEF_ENGINES = 3
 )(
     input logic CLK100MHZ,
     input logic CPU_RESETN,
@@ -55,7 +56,8 @@ module orb_board_top #(
 
     system_top #(
         .ORB_LEVELS(ORB_LEVELS), .FRAME_WIDTH(LEVEL_WIDTH[0:ORB_LEVELS-1]),
-        .FRAME_HEIGHT(LEVEL_HEIGHT[0:ORB_LEVELS-1])
+        .FRAME_HEIGHT(LEVEL_HEIGHT[0:ORB_LEVELS-1]),
+        .LAST_LEVEL_BRIEF_ENGINES(LAST_LEVEL_BRIEF_ENGINES)
     ) system (
         .clk(CLK100MHZ), .reset(reset),
         .cam_pclk(CAM_PCLK), .cam_href(CAM_HREF), .cam_vsync(CAM_VSYNC),

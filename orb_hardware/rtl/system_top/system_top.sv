@@ -5,6 +5,7 @@ module system_top #(
     parameter int FRAME_WIDTH [0:ORB_LEVELS-1] = '{default:640},
     parameter int FRAME_HEIGHT [0:ORB_LEVELS-1] = '{default:480},
     parameter int BRIEF_ENGINES = 3,
+    parameter int LAST_LEVEL_BRIEF_ENGINES = BRIEF_ENGINES,
     parameter int KEYPOINT_FIFO_DEPTH = 512,
     parameter int DESCRIPTOR_FIFO_DEPTH = 256,
     parameter int CAMERA_FIFO_DEPTH = 512,
@@ -74,7 +75,8 @@ module system_top #(
 
         orb_pyramid_level #(
             .FRAME_WIDTH(FRAME_WIDTH[level]), .FRAME_HEIGHT(FRAME_HEIGHT[level]),
-            .BRIEF_ENGINES(BRIEF_ENGINES), .KEYPOINT_FIFO_DEPTH(KEYPOINT_FIFO_DEPTH)
+            .BRIEF_ENGINES(level == ORB_LEVELS-1 ? LAST_LEVEL_BRIEF_ENGINES : BRIEF_ENGINES),
+            .KEYPOINT_FIFO_DEPTH(KEYPOINT_FIFO_DEPTH)
         ) orb (
             .clk(clk), .reset(reset),
             .in_pixel(level == 0 ? pixel_gray : in_pixel[level]),
