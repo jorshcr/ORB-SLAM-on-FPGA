@@ -11,23 +11,26 @@ module descriptor_output_tb;
     logic [STREAMS-1:0][18:0] in_pos = '0;
     logic [STREAMS-1:0][1:0] in_octave = '0;
     logic [STREAMS-1:0][2:0] in_frame_id = '0;
+    logic [STREAMS-1:0][5:0] in_angle = '0;
     logic out_valid, out_ready = 0, reset_busy;
     logic [255:0] out_descriptor;
     logic [18:0] out_pos;
     logic [1:0] out_octave;
     logic [2:0] out_frame_id;
+    logic [5:0] out_angle;
     int sent [0:STREAMS-1], received [0:STREAMS-1];
     int epoch = 0, total = 0, blocked = 0;
     logic was_stalled = 0;
-    logic [279:0] held_record;
-    wire [279:0] output_record = {out_frame_id, out_octave, out_pos, out_descriptor};
+    logic [285:0] held_record;
+    wire [285:0] output_record = {out_frame_id, out_octave, out_pos, out_angle, out_descriptor};
 
     descriptor_output #(.ORB_STREAMS(STREAMS), .FIFO_DEPTH(DEPTH)) dut (.*);
 
-    function automatic [279:0] record_for(input int stream, number, generation);
+    function automatic [285:0] record_for(input int stream, number, generation);
         logic [31:0] payload;
         payload = 32'(number) ^ (32'(stream) << 16) ^ (32'(generation) << 24);
-        return {3'(number/3+generation), 2'(stream), 19'(number*3+stream), {8{payload}}};
+        return {3'(number/3+generation), 2'(stream), 19'(number*3+stream),
+                6'(number+stream*17+generation), {8{payload}}};
     endfunction
 
     always @(posedge clk) begin
@@ -67,7 +70,7 @@ module descriptor_output_tb;
             out_ready = consume && cycle > DEPTH+50 && cycle%7 != 0 && cycle%11 != 0;
             for (int stream = 0; stream < STREAMS; stream++) begin
                 in_valid[stream] = sent[stream] < budget;
-                {in_frame_id[stream], in_octave[stream], in_pos[stream], in_descriptor[stream]} =
+                {in_frame_id[stream], in_octave[stream], in_pos[stream], in_angle[stream], in_descriptor[stream]} =
                     record_for(stream, sent[stream], epoch);
             end
         end

@@ -14,6 +14,7 @@ module brief_engine (
     output logic busy,
 
     output logic [255:0] out_descriptor,
+    output logic [5:0] out_angle,
     output logic out_valid,
     input logic out_ready
 );
@@ -26,8 +27,8 @@ module brief_engine (
     logic signed [5:0] x_delayed [0:1];
     logic signed [5:0] y_delayed [0:1];
     logic pairs_issued;
-    logic [2:0] valid_delayed;
-    logic [7:0] pair_delayed [0:2];
+    logic [3:0] valid_delayed;
+    logic [7:0] pair_delayed [0:3];
     logic [5:0] column_count;
     logic window_ready, window_shift;
     logic in_ready;
@@ -38,6 +39,8 @@ module brief_engine (
     logic signed [5:0] x_rotated [0:1];
     logic signed [5:0] y_rotated [0:1];
     logic [5:0] window [0:36][0:36];
+    logic [5:0] row_pixels [0:1][0:36];
+    logic [5:0] row_index_delayed [0:1];
     logic [5:0] pixel_a, pixel_b;
     (* use_dsp = "yes" *) logic signed [13:0] x_cos [0:1], y_sin [0:1];
     (* use_dsp = "yes" *) logic signed [13:0] x_sin [0:1], y_cos [0:1];
@@ -57,6 +60,8 @@ module brief_engine (
 
     assign in_ready = (state == IDLE) && window_ready && !out_valid && !reset;
     assign busy = (state != IDLE) || out_valid;
+    // Full-circle bin; odd quadrants reverse the magnitude-based sector index.
+    assign out_angle = {quadrant_saved, angle_saved ^ {4{quadrant_saved[0]}}};
     // A match freezes the window already present before the accepting edge.
     assign window_shift = in_valid && (state != DESCRIPTOR) &&
                           !(keypoint_match && in_ready) && !reset;
@@ -114,9 +119,9 @@ module brief_engine (
                 end
 
                 DESCRIPTOR: begin
-                    valid_delayed <= {valid_delayed[1:0], !pairs_issued};
+                    valid_delayed <= {valid_delayed[2:0], !pairs_issued};
                     pair_delayed[0] <= pair_index;
-                    for (int stage = 1; stage < 3; stage++)
+                    for (int stage = 1; stage < 4; stage++)
                         pair_delayed[stage] <= pair_delayed[stage-1];
 
                     // Stage 1: load the pair coordinates.
@@ -140,17 +145,26 @@ module brief_engine (
                         end
                     end
 
-                    // Stage 3: convert centered offsets to window indices.
+                    // Stage 3: select one column from every row.
                     if (valid_delayed[1]) begin
-                        pixel_a <= window[int'(y_rotated[0]) + 18][int'(x_rotated[0]) + 18];
-                        pixel_b <= window[int'(y_rotated[1]) + 18][int'(x_rotated[1]) + 18];
+                        for (int point = 0; point < 2; point++) begin
+                            row_index_delayed[point] <= 6'(int'(y_rotated[point]) + 18);
+                            for (int row = 0; row < 37; row++)
+                                row_pixels[point][row] <= window[row][int'(x_rotated[point]) + 18];
+                        end
                     end
 
-                    // Stage 4: equal pixels produce a zero bit.
-                    if (valid_delayed[2])
-                        out_descriptor[pair_delayed[2]] <= pixel_a > pixel_b;
+                    // Stage 4: select the row from the registered candidates.
+                    if (valid_delayed[2]) begin
+                        pixel_a <= row_pixels[0][row_index_delayed[0]];
+                        pixel_b <= row_pixels[1][row_index_delayed[1]];
+                    end
 
-                    if (valid_delayed[2] && pair_delayed[2] == 8'd255) begin
+                    // Stage 5: equal pixels produce a zero bit.
+                    if (valid_delayed[3])
+                        out_descriptor[pair_delayed[3]] <= pixel_a > pixel_b;
+
+                    if (valid_delayed[3] && pair_delayed[3] == 8'd255) begin
                         state <= DRAIN;
                         column_count <= '0;
                         window_ready <= 1'b0;

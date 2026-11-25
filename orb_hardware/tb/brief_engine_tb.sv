@@ -67,11 +67,11 @@ module brief_engine_tb;
             tick(); keypoint_match = 0;
             sine = 0; cosine = 0;
             cycles = 0;
-            while (!out_valid && cycles < 260) begin
+            while (!out_valid && cycles < 261) begin
                 if (in_ready) $fatal(1, "Ready during descriptor");
                 tick(); cycles++;
             end
-            if (cycles != 259 || !out_valid) $fatal(1, "Wrong completion cycle %0d", cycles);
+            if (cycles != 260 || !out_valid) $fatal(1, "Wrong completion cycle %0d", cycles);
             if (out_descriptor !== expected) $fatal(1, "Descriptor mismatch case %0d", test_id);
             in_valid = 0; out_ready = 0;
             repeat (40) begin

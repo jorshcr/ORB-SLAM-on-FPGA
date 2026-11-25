@@ -199,7 +199,7 @@ module fast_detector_tb;
             end
             #1;
             if (!reset && dut.brief_valid[engine] && dut.brief_ready[engine]) begin
-                if (!pending || cycle-accepted_cycle != 259)
+                if (!pending || cycle-accepted_cycle != 260)
                     $fatal(1, "BRIEF completion timing mismatch");
                 if (dut.brief_descriptor[engine] !== expected_descriptor ||
                     dut.brief_pos[engine] !== expected_pos || dut.brief_score[engine] !== expected_score)
