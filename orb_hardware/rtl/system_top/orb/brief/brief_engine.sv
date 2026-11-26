@@ -137,11 +137,11 @@ module brief_engine (
                             pair_index <= pair_index + 1'b1;
                     end
 
-                    // Stage 2: rotate both points; remove seven fractional bits.
+                    // Stage 2: rotate and round to the nearest pixel.
                     if (valid_delayed[0]) begin
                         for (int point = 0; point < 2; point++) begin
-                            x_rotated[point] <= 6'((15'(x_cos[point]) - 15'(y_sin[point])) >>> 7);
-                            y_rotated[point] <= 6'((15'(x_sin[point]) + 15'(y_cos[point])) >>> 7);
+                            x_rotated[point] <= 6'((15'(x_cos[point]) - 15'(y_sin[point]) + 15'sd64) >>> 7);
+                            y_rotated[point] <= 6'((15'(x_sin[point]) + 15'(y_cos[point]) + 15'sd64) >>> 7);
                         end
                     end
 

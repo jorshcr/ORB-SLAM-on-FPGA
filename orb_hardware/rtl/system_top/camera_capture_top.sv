@@ -13,19 +13,20 @@ module camera_capture_top #(
     input logic cam_href,
     input logic cam_vsync,
     input logic [7:0] cam_data,
+    input logic capture_enable,
     output logic out_valid,
     output logic [7:0] out_gray,
     output logic [7:0] out_u,
     output logic [7:0] out_v,
     output logic [9:0] out_x,
     output logic [8:0] out_y,
-    output logic [2:0] out_frame_id,
     output logic out_frame_start,
     output logic out_frame_end,
     output logic overflow
 );
 
     (* ASYNC_REG = "TRUE" *) logic [2:0] reset_camera = '1;
+    (* ASYNC_REG = "TRUE" *) logic [1:0] capture_enable_sync;
     (* ASYNC_REG = "TRUE" *) logic [1:0] overflow_sync;
     (* IOB = "TRUE" *) logic [7:0] cam_data_delayed;
     (* IOB = "TRUE" *) logic cam_href_delayed, cam_vsync_delayed;
@@ -35,7 +36,7 @@ module camera_capture_top #(
     logic overflow_camera;
     logic [33:0] fifo_in, fifo_out;
     logic fifo_full, fifo_empty, wr_busy, rd_busy, fifo_write, fifo_read;
-    logic second_pixel, frame_active, seen_frame;
+    logic second_pixel, frame_active;
     logic [7:0] second_gray;
     logic [9:0] next_x;
     logic [8:0] next_y;
@@ -67,6 +68,7 @@ module camera_capture_top #(
         cam_vsync_delayed <= cam_vsync;
 
         if (reset_camera[2]) begin
+            capture_enable_sync <= '0;
             byte_phase <= 0;
             bytes_saved <= 0;
             frame_pending <= 0;
@@ -75,13 +77,14 @@ module camera_capture_top #(
             capture_active <= 0;
             overflow_camera <= 0;
         end else begin
+            capture_enable_sync <= {capture_enable_sync[0], capture_enable};
             href_delayed <= cam_href_delayed;
 
             if (cam_vsync_delayed) begin
                 byte_phase <= 0;
                 frame_pending <= 1;
                 line_pending <= 1;
-                capture_active <= 1;
+                capture_active <= capture_enable_sync[1];
             end else if (!cam_href_delayed) begin
                 byte_phase <= 0;
                 line_pending <= 1;
@@ -126,7 +129,6 @@ module camera_capture_top #(
             second_pixel <= 0;
             second_gray <= 0;
             frame_active <= 0;
-            seen_frame <= 0;
             next_x <= 0;
             next_y <= 0;
             out_valid <= 0;
@@ -135,7 +137,6 @@ module camera_capture_top #(
             out_v <= 0;
             out_x <= 0;
             out_y <= 0;
-            out_frame_id <= 0;
             out_frame_start <= 0;
             out_frame_end <= 0;
         end else begin
@@ -172,8 +173,6 @@ module camera_capture_top #(
                 if (fifo_out[33]) begin
                     next_y <= 0;
                     frame_active <= 1;
-                    seen_frame <= 1;
-                    out_frame_id <= seen_frame ? out_frame_id + 1'b1 : 3'd0;
                     out_frame_start <= 1;
                 end
             end

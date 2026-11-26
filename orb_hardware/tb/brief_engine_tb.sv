@@ -53,10 +53,10 @@ module brief_engine_tb;
             endcase
             for (int pair_id = 0; pair_id < 256; pair_id++) begin
                 ref_index = 8'(pair_id); #1;
-                ax = (int'(xa)*int'(cosine) - int'(ya)*int'(sine)) >>> 7;
-                ay = (int'(xa)*int'(sine) + int'(ya)*int'(cosine)) >>> 7;
-                bx = (int'(xb)*int'(cosine) - int'(yb)*int'(sine)) >>> 7;
-                by = (int'(xb)*int'(sine) + int'(yb)*int'(cosine)) >>> 7;
+                ax = (int'(xa)*int'(cosine) - int'(ya)*int'(sine) + 64) >>> 7;
+                ay = (int'(xa)*int'(sine) + int'(ya)*int'(cosine) + 64) >>> 7;
+                bx = (int'(xb)*int'(cosine) - int'(yb)*int'(sine) + 64) >>> 7;
+                by = (int'(xb)*int'(sine) + int'(yb)*int'(cosine) + 64) >>> 7;
                 if (ax < -18 || ax > 18 || ay < -18 || ay > 18 ||
                     bx < -18 || bx > 18 || by < -18 || by > 18)
                     $fatal(1, "Rotated coordinate outside patch");

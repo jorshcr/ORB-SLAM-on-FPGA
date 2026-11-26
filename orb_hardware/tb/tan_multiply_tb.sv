@@ -2,7 +2,7 @@
 module tan_multiply_tb;
     logic clk = 0, reset = 1, in_valid = 0;
     logic [21:0] abs_moment_x = 0;
-    logic [15:0][42:0] products;
+    logic [14:0][34:0] products;
     logic out_valid;
     real theta;
     longint unsigned coefficient, expected;
@@ -14,11 +14,11 @@ module tan_multiply_tb;
         #1;
         if (out_valid !== (in_valid && !reset)) $fatal(1, "Valid mismatch");
         if (out_valid) begin
-            for (int k = 0; k < 16; k++) begin
-                theta = (k + 0.5) * 3.141592653589793 / 32.0;
-                coefficient = $rtoi(($sin(theta)/$cos(theta)) * 65536.0 + 0.5);
+            for (int k = 0; k < 15; k++) begin
+                theta = (k + 1) * 3.141592653589793 / 32.0;
+                coefficient = $rtoi(($sin(theta)/$cos(theta)) * 256.0 + 0.5);
                 expected = longint'(abs_moment_x) * coefficient;
-                if (products[k] !== expected[42:0]) $fatal(1, "Product mismatch at %0d", k);
+                if (products[k] !== expected[34:0]) $fatal(1, "Product mismatch at %0d", k);
                 checked++;
             end
         end

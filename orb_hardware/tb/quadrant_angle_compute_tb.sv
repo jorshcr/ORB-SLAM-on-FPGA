@@ -36,11 +36,11 @@ module quadrant_angle_compute_tb;
         defined_ref[0] = ax != 0 || ay != 0;
         quadrant_ref[0] = m01 < 0 ? (m10 < 0 ? 2 : 3) : (m10 < 0 ? 1 : 0);
         sector_ref[0] = 0;
-        for (int k = 0; k < 16; k++) begin
-            theta = (k+0.5)*3.141592653589793/32.0;
-            coefficient = $rtoi($sin(theta)/$cos(theta)*65536.0+0.5);
-            if (defined_ref[0] && ax*coefficient <= ay*65536)
-                sector_ref[0] = k;
+        for (int k = 0; k < 15; k++) begin
+            theta = (k+1)*3.141592653589793/32.0;
+            coefficient = $rtoi($sin(theta)/$cos(theta)*256.0+0.5);
+            if (defined_ref[0] && ax*coefficient <= ay*256)
+                sector_ref[0] = k + 1;
         end
         angle_ref[0] = quadrant_ref[0]*16 + ((quadrant_ref[0] % 2) ? 15-sector_ref[0] : sector_ref[0]);
         tag_ref[0] = in_tag;
@@ -71,11 +71,11 @@ module quadrant_angle_compute_tb;
         drive(1,0); drive(-1,0); drive(0,1); drive(0,-1);
         drive(-2097152,0); drive(0,-2097152);
         drive(-2097152,-2097152); drive(2097151,2097151);
-        for (int k = 0; k < 16; k++) begin
-            threshold_value = $rtoi($tan((k+0.5)*3.141592653589793/32.0)*65536.0+0.5);
+        for (int k = 0; k < 15; k++) begin
+            threshold_value = $rtoi($tan((k+1)*3.141592653589793/32.0)*256.0+0.5);
             for (int offset = -1; offset <= 1; offset++) begin
                 for (int q = 0; q < 4; q++) begin
-                    x = (q == 1 || q == 2) ? -65536 : 65536;
+                    x = (q == 1 || q == 2) ? -256 : 256;
                     y = (q >= 2) ? -(threshold_value+offset) : threshold_value+offset;
                     drive(x,y);
                 end

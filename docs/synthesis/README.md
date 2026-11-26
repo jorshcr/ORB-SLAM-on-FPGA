@@ -14,6 +14,9 @@ Dated snapshots record the tested design, constraints, resource use, timing resu
 | [2026-11-24, three levels](2026-11-24-board-three-level.md) | 3 ORBs + 2 scalers; synthesis counts, placement failed | 100 MHz target | 60,349 | 96,399 | 33.5 | 188 | unavailable | unavailable |
 | [2026-11-24, 3/3/2 BRIEF](2026-11-24-board-332.md) | 3 ORBs, 8 BRIEFs; synthesis counts, placement failed | 100 MHz target | 55,329 | 87,387 | 33.5 | 180 | unavailable | unavailable |
 | [2026-11-24, two levels](2026-11-24-board-two-level.md) | 2 ORBs, 6 BRIEFs + scaler; routed | 100 MHz | 39,556 | 64,298 | 27 | 124 | +0.003 ns | +0.007 ns |
+| [2026-11-24, two BRIEFs per level](2026-11-24-board-two-level-two-brief.md) | 2 ORBs, 4 BRIEFs + scaler; routed | 100 MHz | 29,224 | 46,358 | 27 | 108 | +0.019 ns | +0.051 ns |
+| [2026-11-25, frame controller](2026-11-25-frame-controller.md) | 2 ORBs, 4 BRIEFs; single-frame capture/drain + Q8 angle | 100 MHz | 29,017 | 46,311 | 27 | 104 | +0.138 ns | +0.021 ns |
+| [2026-11-25, OpenCV pattern](2026-11-25-opencv-pattern.md) | UDP, 3 ORBs, 2/2/1 BRIEFs, standard pair table | 100 MHz | 41,461 | 63,066 | 37 | 150 | +0.011 ns | +0.017 ns |
 
 For future runs, add a dated Markdown snapshot, preserve the reports in a matching subfolder, and append a row here.
 

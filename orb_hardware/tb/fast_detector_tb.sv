@@ -188,10 +188,10 @@ module fast_detector_tb;
                     ya = int'(dut.g_brief[engine].brief.pattern.PAIRS[pair_id][1]);
                     xb = int'(dut.g_brief[engine].brief.pattern.PAIRS[pair_id][2]);
                     yb = int'(dut.g_brief[engine].brief.pattern.PAIRS[pair_id][3]);
-                    ax = (xa*int'(orientation_cos)-ya*int'(orientation_sin)) >>> 7;
-                    ay = (xa*int'(orientation_sin)+ya*int'(orientation_cos)) >>> 7;
-                    bx = (xb*int'(orientation_cos)-yb*int'(orientation_sin)) >>> 7;
-                    by = (xb*int'(orientation_sin)+yb*int'(orientation_cos)) >>> 7;
+                    ax = (xa*int'(orientation_cos)-ya*int'(orientation_sin) + 64) >>> 7;
+                    ay = (xa*int'(orientation_sin)+ya*int'(orientation_cos) + 64) >>> 7;
+                    bx = (xb*int'(orientation_cos)-yb*int'(orientation_sin) + 64) >>> 7;
+                    by = (xb*int'(orientation_sin)+yb*int'(orientation_cos) + 64) >>> 7;
                     expected_descriptor[pair_id] =
                         (reference_blur(int'(kp_x)+ax, int'(kp_y)+ay) >> 2) >
                         (reference_blur(int'(kp_x)+bx, int'(kp_y)+by) >> 2);
@@ -229,14 +229,14 @@ module fast_detector_tb;
     logic [18:0] angle_tags [0:12];
     int angle_codes [0:12], angle_quadrants [0:12];
     longint signed mx, my;
-    longint unsigned ax, ay, tangent [0:15];
+    longint unsigned ax, ay, tangent [0:14];
     int local_sector, quadrant, orientations_checked = 0;
     int expected_sin, expected_cos;
     real reference_angle;
 
     initial begin
-        for (int k = 0; k < 16; k++)
-            tangent[k] = $rtoi($tan((k+0.5)*3.141592653589793/32.0)*65536.0+0.5);
+        for (int k = 0; k < 15; k++)
+            tangent[k] = $rtoi($tan((k+1)*3.141592653589793/32.0)*256.0+0.5);
     end
 
     always @(posedge clk) begin
@@ -265,8 +265,8 @@ module fast_detector_tb;
             ay = my < 0 ? -my : my;
             quadrant = my < 0 ? (mx < 0 ? 2 : 3) : (mx < 0 ? 1 : 0);
             local_sector = 0;
-            for (int k = 0; k < 16; k++)
-                if (ay != 0 && ax*tangent[k] <= ay*65536) local_sector = k;
+            for (int k = 0; k < 15; k++)
+                if (ay != 0 && ax*tangent[k] <= ay*256) local_sector = k + 1;
             end
             angle_tags[0] = blur_win_pos;
             angle_quadrants[0] = quadrant;

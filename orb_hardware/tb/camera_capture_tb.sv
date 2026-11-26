@@ -3,14 +3,13 @@
 module camera_capture_tb;
     parameter bit Y_FIRST = 0;
     parameter bit SWAP_UV = 0;
-    logic clk = 0, pclk = 0, reset = 1;
+    logic clk = 0, pclk = 0, reset = 1, capture_enable = 1;
     logic href = 0, vsync = 0;
     logic [7:0] data = 0;
     wire valid, sof, eof, overflow;
     wire [7:0] gray, u, v;
     wire [9:0] x;
     wire [8:0] y;
-    wire [2:0] frame_id;
     int received = 0;
 
     always #5 clk = ~clk;
@@ -21,9 +20,9 @@ module camera_capture_tb;
         .Y_FIRST(Y_FIRST), .SWAP_UV(SWAP_UV)
     ) dut (
         .clk(clk), .reset(reset), .cam_pclk(pclk), .cam_href(href),
-        .cam_vsync(vsync), .cam_data(data), .out_valid(valid),
+        .cam_vsync(vsync), .cam_data(data), .capture_enable(capture_enable), .out_valid(valid),
         .out_gray(gray), .out_u(u), .out_v(v), .out_x(x), .out_y(y),
-        .out_frame_id(frame_id), .out_frame_start(sof), .out_frame_end(eof),
+        .out_frame_start(sof), .out_frame_end(eof),
         .overflow(overflow)
     );
 
@@ -51,10 +50,9 @@ module camera_capture_tb;
         if (!reset && valid) begin
             if (gray !== 8'(received) || u !== 70 || v !== 190 ||
                 x !== 10'(received % 8) || y !== 9'((received % 24)/8) ||
-                frame_id !== 3'(received/24) ||
                 sof !== (received % 24 == 0) || eof !== (received % 24 == 23))
-                $fatal(1, "Pixel %0d: gray=%0d xy=%0d,%0d frame=%0d sof=%b eof=%b",
-                       received, gray, x, y, frame_id, sof, eof);
+                $fatal(1, "Pixel %0d: gray=%0d xy=%0d,%0d sof=%b eof=%b",
+                       received, gray, x, y, sof, eof);
             received++;
         end
     end

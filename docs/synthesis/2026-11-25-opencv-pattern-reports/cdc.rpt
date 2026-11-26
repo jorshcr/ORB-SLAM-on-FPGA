@@ -1,0 +1,26 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
+| Date         : Wed Nov 25 16:58:27 2026
+| Host         : tsjoshlaptop running 64-bit major release  (build 9200)
+| Command      : report_cdc -file C:/Users/joshr/projects/ORB-SLAM-on-FPGA/orb_test_output/udp_board_20261125_162208/cdc.rpt
+| Design       : orb_udp_board_top
+| Device       : 7a100t-csg324
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+CDC Report
+
+Severity  Source Clock      Destination Clock  CDC Type                 Exceptions               Endpoints  Safe  Unsafe  Unknown  No ASYNC_REG  
+--------  ----------------  -----------------  -----------------------  -----------------------  ---------  ----  ------  -------  ------------  
+Critical  sys_clk           camera_pclk        No Common Primary Clock  Asynch Clock Groups              3     2       1        0             0  
+Critical  input port clock  camera_xclk        No Common Primary Clock  False Path                       1     0       1        0             0  
+Critical  input port clock  sys_clk            No Common Primary Clock  False Path                   54838    29    1229    53580            12  
+Warning   input port clock  eth_clk            No Common Primary Clock  False Path                       1     1       0        0             1  
+Warning   eth_clk           sys_clk            Safely Timed             Max Delay Datapath Only         31    31       0        0             0  
+Info      input port clock  camera_pclk        No Common Primary Clock  False Path                       1     1       0        0             0  
+Info      eth_ref           eth_clk            Safely Timed             None                             4     4       0        0             0  
+Info      sys_clk           eth_clk            Safely Timed             None                            30    30       0        0             0  
+Info      camera_pclk       sys_clk            No Common Primary Clock  Asynch Clock Groups              2     2       0        0             0  
+

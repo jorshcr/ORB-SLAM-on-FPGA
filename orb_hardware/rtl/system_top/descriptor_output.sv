@@ -11,7 +11,6 @@ module descriptor_output #(
     input logic [ORB_STREAMS-1:0][255:0] in_descriptor,
     input logic [ORB_STREAMS-1:0][18:0] in_pos,
     input logic [ORB_STREAMS-1:0][1:0] in_octave,
-    input logic [ORB_STREAMS-1:0][2:0] in_frame_id,
     input logic [ORB_STREAMS-1:0][5:0] in_angle,
 
     output logic out_valid,
@@ -19,12 +18,12 @@ module descriptor_output #(
     output logic [255:0] out_descriptor,
     output logic [18:0] out_pos,
     output logic [1:0] out_octave,
-    output logic [2:0] out_frame_id,
     output logic [5:0] out_angle,
-    output logic reset_busy
+    output logic reset_busy,
+    output logic idle
 );
 
-    localparam int RECORD_W = 286;
+    localparam int RECORD_W = 283;
     logic [ORB_STREAMS-1:0] pending_valid, pending_ready;
     logic [ORB_STREAMS-1:0][RECORD_W-1:0] pending_data;
     logic selected_valid, selected_ready;
@@ -32,7 +31,8 @@ module descriptor_output #(
 
     // Producers hold valid and all metadata until in_ready accepts the record.
     assign in_ready = (~pending_valid | pending_ready) & {ORB_STREAMS{!reset_busy}};
-    assign {out_frame_id, out_octave, out_pos, out_angle, out_descriptor} = fifo_data;
+    assign {out_octave, out_pos, out_angle, out_descriptor} = fifo_data;
+    assign idle = !reset_busy && !(|pending_valid) && !selected_valid && !out_valid;
 
     always_ff @(posedge clk) begin
         if (reset) begin
@@ -42,7 +42,7 @@ module descriptor_output #(
                 if (in_ready[stream]) begin
                     pending_valid[stream] <= in_valid[stream];
                     if (in_valid[stream])
-                        pending_data[stream] <= {in_frame_id[stream], in_octave[stream],
+                        pending_data[stream] <= {in_octave[stream],
                                                  in_pos[stream], in_angle[stream], in_descriptor[stream]};
                 end
             end

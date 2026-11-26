@@ -26,7 +26,8 @@ module orb_pyramid_level #(
     output logic [255:0] descriptor_data,
     output logic [18:0] descriptor_pos,
     output logic [7:0] descriptor_score,
-    output logic [5:0] descriptor_angle
+    output logic [5:0] descriptor_angle,
+    output logic processing
 );
 
     logic       out_valid;
@@ -54,6 +55,7 @@ module orb_pyramid_level #(
     logic       kp_reset_busy;
     logic [BRIEF_ENGINES-1:0] brief_busy, brief_ready;
     logic [BRIEF_ENGINES-1:0][288:0] result_data;
+    logic [6:0] pipeline_activity;
 
     round_robin_arbiter #(.INPUTS(BRIEF_ENGINES), .DATA_W(289)) result_arbiter (
         .clk(clk), .reset(reset),
@@ -61,6 +63,18 @@ module orb_pyramid_level #(
         .out_valid(descriptor_valid), .out_ready(descriptor_ready),
         .out_data({descriptor_data, descriptor_pos, descriptor_score, descriptor_angle})
     );
+
+    assign processing = (pipeline_activity != 0) || kp_valid || kp_reset_busy ||
+                        (|brief_busy) || (|brief_valid) || descriptor_valid;
+
+    always_ff @(posedge clk) begin
+        if (reset)
+            pipeline_activity <= '0;
+        else if (in_valid)
+            pipeline_activity <= 7'd64;
+        else if (pipeline_activity != 0)
+            pipeline_activity <= pipeline_activity - 1'b1;
+    end
 
     logic [6:0][6:0][7:0] win;
     logic win_valid;

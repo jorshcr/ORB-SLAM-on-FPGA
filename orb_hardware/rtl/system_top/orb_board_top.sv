@@ -2,7 +2,8 @@
 
 module orb_board_top #(
     parameter int ORB_LEVELS = 2,
-    parameter int LAST_LEVEL_BRIEF_ENGINES = 3
+    parameter int BRIEF_ENGINES = 2,
+    parameter int LAST_LEVEL_BRIEF_ENGINES = BRIEF_ENGINES
 )(
     input logic CLK100MHZ,
     input logic CPU_RESETN,
@@ -24,6 +25,7 @@ module orb_board_top #(
     wire [1:0] descriptor_octave;
     wire [7:0] orientation_byte = {descriptor_octave, descriptor_angle};
     wire camera_overflow;
+    wire frame_done, frame_busy;
     wire [ORB_LEVELS-1:0] kp_overflow, brief_dropped;
     localparam int LEVEL_WIDTH [0:3] = '{640, 533, 444, 370};
     localparam int LEVEL_HEIGHT [0:3] = '{480, 400, 333, 277};
@@ -57,18 +59,19 @@ module orb_board_top #(
     system_top #(
         .ORB_LEVELS(ORB_LEVELS), .FRAME_WIDTH(LEVEL_WIDTH[0:ORB_LEVELS-1]),
         .FRAME_HEIGHT(LEVEL_HEIGHT[0:ORB_LEVELS-1]),
-        .LAST_LEVEL_BRIEF_ENGINES(LAST_LEVEL_BRIEF_ENGINES)
+        .BRIEF_ENGINES(BRIEF_ENGINES), .LAST_LEVEL_BRIEF_ENGINES(LAST_LEVEL_BRIEF_ENGINES)
     ) system (
         .clk(CLK100MHZ), .reset(reset),
         .cam_pclk(CAM_PCLK), .cam_href(CAM_HREF), .cam_vsync(CAM_VSYNC),
         .cam_data(CAM_DATA), .in_pixel(level_pixel), .in_valid(level_valid),
         .in_x(level_x), .in_y(level_y), .threshold({ORB_LEVELS{8'd20}}),
         .pixel_valid(level_valid[0]), .pixel_gray(level_pixel[0]), .pixel_u(), .pixel_v(),
-        .pixel_x(level_x[0]), .pixel_y(level_y[0]), .pixel_frame_id(), .pixel_frame_start(), .pixel_frame_end(),
+        .pixel_x(level_x[0]), .pixel_y(level_y[0]), .pixel_frame_start(), .pixel_frame_end(),
         .camera_overflow(camera_overflow), .out_valid(descriptor_valid), .out_ready(1'b1),
-        .out_descriptor(descriptor), .out_pos(), .out_octave(descriptor_octave), .out_frame_id(),
+        .out_descriptor(descriptor), .out_pos(), .out_octave(descriptor_octave),
         .out_angle(descriptor_angle),
-        .reset_busy(), .kp_overflow(kp_overflow), .brief_dropped(brief_dropped)
+        .reset_busy(), .frame_done(frame_done), .frame_busy(frame_busy),
+        .kp_overflow(kp_overflow), .brief_dropped(brief_dropped)
     );
 
     always_ff @(posedge CLK100MHZ or posedge reset) begin

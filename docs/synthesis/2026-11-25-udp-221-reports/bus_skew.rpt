@@ -1,0 +1,819 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
+| Date         : Wed Nov 25 01:22:25 2026
+| Host         : tsjoshlaptop running 64-bit major release  (build 9200)
+| Command      : report_bus_skew -file C:/Users/joshr/projects/ORB-SLAM-on-FPGA/orb_test_output/udp_board_20261125_005754/bus_skew.rpt
+| Design       : orb_udp_board_top
+| Device       : 7a100t-csg324
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Bus Skew Report
+
+Table of Contents
+-----------------
+1. Bus Skew Report Summary
+2. Bus Skew Report Per Constraint
+
+1. Bus Skew Report Summary
+--------------------------
+
+Id  Position  From                            To                              Corner  Requirement(ns)  Actual(ns)  Slack(ns)
+--  --------  ------------------------------  ------------------------------  ------  ---------------  ----------  ---------
+1   21        [get_cells [list {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[0]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[1]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[2]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[3]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[4]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[5]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[6]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[7]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[8]}]]
+                                              [get_cells [list {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][0]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][1]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][2]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][3]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][4]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][5]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][6]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][7]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][8]}]]
+                                                                              Slow             10.000       1.958      8.042
+2   23        [get_cells [list {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[0]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[1]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[2]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[3]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[4]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[5]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[6]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[7]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[8]}]]
+                                              [get_cells [list {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][0]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][1]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][2]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][3]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][4]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][5]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][6]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][7]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][8]}]]
+                                                                              Slow             10.000       1.904      8.096
+3   33        [get_cells {{ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_reg_reg[*]} {ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_reg_reg[*]}}]
+                                              [get_cells {ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[*]}]
+                                                                              Slow             20.000       0.980     19.020
+4   35        [get_cells -quiet {ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[*]}]
+                                              [get_cells {ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[*]}]
+                                                                              Slow             10.000       0.787      9.213
+5   41        [get_cells {{ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_reg_reg[*]} {ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_reg_reg[*]}}]
+                                              [get_cells {ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[*]}]
+                                                                              Slow             10.000       1.056      8.944
+6   43        [get_cells -quiet {ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[*]}]
+                                              [get_cells {ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[*]}]
+                                                                              Slow             20.000       0.921     19.079
+
+
+2. Bus Skew Report Per Constraint
+---------------------------------
+
+Id: 1
+set_bus_skew -from [get_cells [list {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[0]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[1]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[2]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[3]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[4]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[5]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[6]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[7]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[8]}]] -to [get_cells [list {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][0]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][1]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][2]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][3]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][4]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][5]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][6]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][7]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][8]}]] 10.000
+Requirement: 10.000ns
+Endpoints: 9
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+sys_clk               camera_pclk           system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][0]/D
+                                                                            system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][2]/D
+                                                                                                            Slow         1.958      8.042
+
+
+Slack (MET) :             8.042ns  (requirement - actual skew)
+  Endpoint Source:        system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk)
+  Endpoint Destination:   system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][0]/D
+                            (rising edge-triggered cell FDRE clocked by camera_pclk)
+  Reference Source:       system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk)
+  Reference Destination:  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][2]/D
+                            (rising edge-triggered cell FDRE clocked by camera_pclk)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:    3.942ns
+  Reference Relative Delay:   1.358ns
+  Relative CRPR:              0.626ns
+  Actual Bus Skew:            1.958ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           2.025     3.506    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.096     3.602 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.140     3.742    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.096     3.838 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.140     3.978    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.096     4.074 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.140     4.214    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.096     4.310 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.140     4.450    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.096     4.546 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.700     6.246    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_clk
+    SLICE_X7Y116         FDRE                                         r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X7Y116         FDRE (Prop_fdre_C_Q)         0.456     6.702 r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[0]/Q
+                         net (fo=1, routed)           2.131     8.833    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/async_path[0]
+    SLICE_X1Y116         FDRE                                         r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock camera_pclk rise edge)
+                                                      0.000     0.000 r  
+    H16                                               0.000     0.000 r  CAM_PCLK (IN)
+                         net (fo=0)                   0.000     0.000    CAM_PCLK
+    H16                  IBUF (Prop_ibuf_I_O)         1.401     1.401 r  CAM_PCLK_IBUF_inst/O
+                         net (fo=1, routed)           1.911     3.312    CAM_PCLK_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091     3.403 r  CAM_PCLK_IBUF_BUFG_inst/O
+                         net (fo=124, routed)         1.582     4.984    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_clk
+    SLICE_X1Y116         FDRE                                         r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][0]/C
+                         clock pessimism              0.000     4.984    
+    SLICE_X1Y116         FDRE (Setup_fdre_C_D)       -0.093     4.891    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][0]
+  -------------------------------------------------------------------
+                         data arrival                           8.833    
+                         clock arrival                          4.891    
+  -------------------------------------------------------------------
+                         relative delay                         3.942    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411     1.411 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           1.920     3.331    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.091     3.422 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.133     3.555    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.091     3.646 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.133     3.779    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.091     3.870 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.133     4.003    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.091     4.094 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.133     4.227    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.091     4.318 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.580     5.898    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_clk
+    SLICE_X7Y116         FDRE                                         r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X7Y116         FDRE (Prop_fdre_C_Q)         0.367     6.265 r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/src_gray_ff_reg[2]/Q
+                         net (fo=1, routed)           0.547     6.812    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/async_path[2]
+    SLICE_X0Y116         FDRE                                         r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock camera_pclk rise edge)
+                                                      0.000     0.000 r  
+    H16                                               0.000     0.000 r  CAM_PCLK (IN)
+                         net (fo=0)                   0.000     0.000    CAM_PCLK
+    H16                  IBUF (Prop_ibuf_I_O)         1.471     1.471 r  CAM_PCLK_IBUF_inst/O
+                         net (fo=1, routed)           2.016     3.487    CAM_PCLK_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096     3.583 r  CAM_PCLK_IBUF_BUFG_inst/O
+                         net (fo=124, routed)         1.701     5.284    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_clk
+    SLICE_X0Y116         FDRE                                         r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][2]/C
+                         clock pessimism              0.000     5.284    
+    SLICE_X0Y116         FDRE (Hold_fdre_C_D)         0.170     5.454    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst/dest_graysync_ff_reg[0][2]
+  -------------------------------------------------------------------
+                         data arrival                           6.812    
+                         clock arrival                          5.454    
+  -------------------------------------------------------------------
+                         relative delay                         1.358    
+
+
+
+Id: 2
+set_bus_skew -from [get_cells [list {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[0]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[1]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[2]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[3]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[4]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[5]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[6]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[7]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[8]}]] -to [get_cells [list {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][0]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][1]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][2]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][3]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][4]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][5]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][6]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][7]} {system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][8]}]] 10.000
+Requirement: 10.000ns
+Endpoints: 9
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+camera_pclk           sys_clk               system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][1]/D
+                                                                            system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][3]/D
+                                                                                                            Slow         1.904      8.096
+
+
+Slack (MET) :             8.096ns  (requirement - actual skew)
+  Endpoint Source:        system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by camera_pclk)
+  Endpoint Destination:   system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][1]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk)
+  Reference Source:       system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by camera_pclk)
+  Reference Destination:  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][3]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:    2.244ns
+  Reference Relative Delay:  -0.227ns
+  Relative CRPR:              0.567ns
+  Actual Bus Skew:            1.904ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock camera_pclk rise edge)
+                                                      0.000     0.000 r  
+    H16                                               0.000     0.000 r  CAM_PCLK (IN)
+                         net (fo=0)                   0.000     0.000    CAM_PCLK
+    H16                  IBUF (Prop_ibuf_I_O)         1.471     1.471 r  CAM_PCLK_IBUF_inst/O
+                         net (fo=1, routed)           2.016     3.487    CAM_PCLK_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096     3.583 r  CAM_PCLK_IBUF_BUFG_inst/O
+                         net (fo=124, routed)         1.701     5.284    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_clk
+    SLICE_X5Y115         FDRE                                         r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y115         FDRE (Prop_fdre_C_Q)         0.419     5.703 r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[1]/Q
+                         net (fo=1, routed)           2.171     7.874    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/async_path[1]
+    SLICE_X7Y116         FDRE                                         r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411     1.411 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           1.920     3.331    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.091     3.422 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.133     3.555    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.091     3.646 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.133     3.779    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.091     3.870 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.133     4.003    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.091     4.094 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.133     4.227    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.091     4.318 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.580     5.898    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_clk
+    SLICE_X7Y116         FDRE                                         r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][1]/C
+                         clock pessimism              0.000     5.898    
+    SLICE_X7Y116         FDRE (Setup_fdre_C_D)       -0.268     5.630    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][1]
+  -------------------------------------------------------------------
+                         data arrival                           7.874    
+                         clock arrival                          5.630    
+  -------------------------------------------------------------------
+                         relative delay                         2.244    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock camera_pclk rise edge)
+                                                      0.000     0.000 r  
+    H16                                               0.000     0.000 r  CAM_PCLK (IN)
+                         net (fo=0)                   0.000     0.000    CAM_PCLK
+    H16                  IBUF (Prop_ibuf_I_O)         1.401     1.401 r  CAM_PCLK_IBUF_inst/O
+                         net (fo=1, routed)           1.911     3.312    CAM_PCLK_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091     3.403 r  CAM_PCLK_IBUF_BUFG_inst/O
+                         net (fo=124, routed)         1.584     4.986    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_clk
+    SLICE_X3Y114         FDRE                                         r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y114         FDRE (Prop_fdre_C_Q)         0.337     5.323 r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/src_gray_ff_reg[3]/Q
+                         net (fo=1, routed)           0.791     6.114    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/async_path[3]
+    SLICE_X2Y114         FDRE                                         r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           2.025     3.506    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.096     3.602 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.140     3.742    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.096     3.838 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.140     3.978    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.096     4.074 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.140     4.214    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.096     4.310 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.140     4.450    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.096     4.546 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.704     6.250    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_clk
+    SLICE_X2Y114         FDRE                                         r  system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][3]/C
+                         clock pessimism              0.000     6.250    
+    SLICE_X2Y114         FDRE (Hold_fdre_C_D)         0.091     6.341    system/camera/camera_fifo/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst/dest_graysync_ff_reg[0][3]
+  -------------------------------------------------------------------
+                         data arrival                           6.114    
+                         clock arrival                          6.341    
+  -------------------------------------------------------------------
+                         relative delay                        -0.227    
+
+
+
+Id: 3
+set_bus_skew -from [get_cells {{ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_reg_reg[*]} {ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_reg_reg[*]}}] -to [get_cells {ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[*]}] 20.000
+Requirement: 20.000ns
+Endpoints: 13
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+sys_clk               eth_clk               ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[3]/D
+                                                                            ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[2]/D
+                                                                                                            Slow         0.980     19.020
+
+
+Slack (MET) :             19.020ns  (requirement - actual skew)
+  Endpoint Source:        ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_reg_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk)
+  Endpoint Destination:   ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[3]/D
+                            (rising edge-triggered cell FDRE clocked by eth_clk)
+  Reference Source:       ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_reg_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk)
+  Reference Destination:  ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[2]/D
+                            (rising edge-triggered cell FDRE clocked by eth_clk)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            20.000ns
+  Endpoint Relative Delay:   -1.032ns
+  Reference Relative Delay:  -2.554ns
+  Relative CRPR:              0.542ns
+  Actual Bus Skew:            0.980ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           2.025     3.506    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.096     3.602 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.140     3.742    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.096     3.838 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.140     3.978    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.096     4.074 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.140     4.214    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.096     4.310 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.140     4.450    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.096     4.546 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.887     6.434    ethernet/eth_mac_inst/rx_fifo/fifo_inst/CLK100MHZ_IBUF_BUFG
+    SLICE_X4Y186         FDRE                                         r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_reg_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y186         FDRE (Prop_fdre_C_Q)         0.419     6.853 r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_reg_reg[3]/Q
+                         net (fo=1, routed)           0.838     7.690    ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_reg[3]
+    SLICE_X5Y183         FDRE                                         r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock eth_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411     1.411 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           1.920     3.331    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.091     3.422 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.133     3.555    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.091     3.646 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.133     3.779    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.091     3.870 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.133     4.003    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.091     4.094 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.133     4.227    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.091     4.318 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.505     5.824    CLK100MHZ_IBUF_BUFG
+    SLICE_X56Y95         FDCE (Prop_fdce_C_Q)         0.418     6.242 r  clock_divider_reg[0]/Q
+                         net (fo=3, routed)           0.669     6.911    clock_divider[0]
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091     7.002 r  eth_clock_buffer/O
+                         net (fo=363, routed)         1.759     8.761    ethernet/eth_mac_inst/rx_fifo/fifo_inst/eth_clock
+    SLICE_X5Y183         FDRE                                         r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[3]/C
+                         clock pessimism              0.228     8.989    
+    SLICE_X5Y183         FDRE (Setup_fdre_C_D)       -0.267     8.722    ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[3]
+  -------------------------------------------------------------------
+                         data arrival                           7.690    
+                         clock arrival                          8.722    
+  -------------------------------------------------------------------
+                         relative delay                        -1.032    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411     1.411 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           1.920     3.331    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.091     3.422 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.133     3.555    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.091     3.646 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.133     3.779    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.091     3.870 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.133     4.003    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.091     4.094 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.133     4.227    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.091     4.318 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.758     6.076    ethernet/eth_mac_inst/rx_fifo/fifo_inst/CLK100MHZ_IBUF_BUFG
+    SLICE_X4Y186         FDRE                                         r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_reg_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y186         FDRE (Prop_fdre_C_Q)         0.367     6.443 r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_reg_reg[2]/Q
+                         net (fo=1, routed)           0.375     6.818    ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_reg[2]
+    SLICE_X4Y187         FDRE                                         r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock eth_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           2.025     3.506    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.096     3.602 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.140     3.742    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.096     3.838 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.140     3.978    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.096     4.074 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.140     4.214    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.096     4.310 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.140     4.450    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.096     4.546 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.626     6.173    CLK100MHZ_IBUF_BUFG
+    SLICE_X56Y95         FDCE (Prop_fdce_C_Q)         0.518     6.691 r  clock_divider_reg[0]/Q
+                         net (fo=3, routed)           0.752     7.443    clock_divider[0]
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     7.539 r  eth_clock_buffer/O
+                         net (fo=363, routed)         1.890     9.430    ethernet/eth_mac_inst/rx_fifo/fifo_inst/eth_clock
+    SLICE_X4Y187         FDRE                                         r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[2]/C
+                         clock pessimism             -0.228     9.202    
+    SLICE_X4Y187         FDRE (Hold_fdre_C_D)         0.170     9.372    ethernet/eth_mac_inst/rx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[2]
+  -------------------------------------------------------------------
+                         data arrival                           6.818    
+                         clock arrival                          9.372    
+  -------------------------------------------------------------------
+                         relative delay                        -2.554    
+
+
+
+Id: 4
+set_bus_skew -from [get_cells -quiet {ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[*]}] -to [get_cells {ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[*]}] 10.000
+Requirement: 10.000ns
+Endpoints: 13
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+eth_clk               sys_clk               ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[2]/D
+                                                                            ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[7]/D
+                                                                                                            Slow         0.787      9.213
+
+
+Slack (MET) :             9.213ns  (requirement - actual skew)
+  Endpoint Source:        ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by eth_clk)
+  Endpoint Destination:   ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[2]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk)
+  Reference Source:       ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[7]/C
+                            (rising edge-triggered cell FDRE clocked by eth_clk)
+  Reference Destination:  ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[7]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:    4.486ns
+  Reference Relative Delay:   3.183ns
+  Relative CRPR:              0.517ns
+  Actual Bus Skew:            0.787ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock eth_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           2.025     3.506    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.096     3.602 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.140     3.742    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.096     3.838 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.140     3.978    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.096     4.074 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.140     4.214    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.096     4.310 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.140     4.450    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.096     4.546 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.626     6.173    CLK100MHZ_IBUF_BUFG
+    SLICE_X56Y95         FDCE (Prop_fdce_C_Q)         0.518     6.691 r  clock_divider_reg[0]/Q
+                         net (fo=3, routed)           0.752     7.443    clock_divider[0]
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     7.539 r  eth_clock_buffer/O
+                         net (fo=363, routed)         1.886     9.426    ethernet/eth_mac_inst/rx_fifo/fifo_inst/eth_clock
+    SLICE_X1Y182         FDRE                                         r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y182         FDRE (Prop_fdre_C_Q)         0.456     9.882 r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[2]/Q
+                         net (fo=1, routed)           0.800    10.682    ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_sync_commit_reg[2]
+    SLICE_X3Y181         FDRE                                         r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411     1.411 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           1.920     3.331    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.091     3.422 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.133     3.555    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.091     3.646 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.133     3.779    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.091     3.870 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.133     4.003    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.091     4.094 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.133     4.227    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.091     4.318 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.754     6.072    ethernet/eth_mac_inst/rx_fifo/fifo_inst/CLK100MHZ_IBUF_BUFG
+    SLICE_X3Y181         FDRE                                         r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[2]/C
+                         clock pessimism              0.228     6.300    
+    SLICE_X3Y181         FDRE (Setup_fdre_C_D)       -0.105     6.195    ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[2]
+  -------------------------------------------------------------------
+                         data arrival                          10.682    
+                         clock arrival                          6.195    
+  -------------------------------------------------------------------
+                         relative delay                         4.486    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock eth_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411     1.411 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           1.920     3.331    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.091     3.422 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.133     3.555    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.091     3.646 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.133     3.779    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.091     3.870 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.133     4.003    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.091     4.094 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.133     4.227    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.091     4.318 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.505     5.824    CLK100MHZ_IBUF_BUFG
+    SLICE_X56Y95         FDCE (Prop_fdce_C_Q)         0.418     6.242 r  clock_divider_reg[0]/Q
+                         net (fo=3, routed)           0.669     6.911    clock_divider[0]
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091     7.002 r  eth_clock_buffer/O
+                         net (fo=363, routed)         1.761     8.763    ethernet/eth_mac_inst/rx_fifo/fifo_inst/eth_clock
+    SLICE_X2Y184         FDRE                                         r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[7]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y184         FDRE (Prop_fdre_C_Q)         0.418     9.181 r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[7]/Q
+                         net (fo=1, routed)           0.405     9.586    ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_sync_commit_reg[7]
+    SLICE_X3Y185         FDRE                                         r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           2.025     3.506    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.096     3.602 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.140     3.742    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.096     3.838 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.140     3.978    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.096     4.074 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.140     4.214    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.096     4.310 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.140     4.450    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.096     4.546 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.888     6.435    ethernet/eth_mac_inst/rx_fifo/fifo_inst/CLK100MHZ_IBUF_BUFG
+    SLICE_X3Y185         FDRE                                         r  ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[7]/C
+                         clock pessimism             -0.228     6.207    
+    SLICE_X3Y185         FDRE (Hold_fdre_C_D)         0.197     6.404    ethernet/eth_mac_inst/rx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[7]
+  -------------------------------------------------------------------
+                         data arrival                           9.586    
+                         clock arrival                          6.404    
+  -------------------------------------------------------------------
+                         relative delay                         3.183    
+
+
+
+Id: 5
+set_bus_skew -from [get_cells {{ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_reg_reg[*]} {ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_reg_reg[*]}}] -to [get_cells {ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[*]}] 10.000
+Requirement: 10.000ns
+Endpoints: 13
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+eth_clk               sys_clk               ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[7]/D
+                                                                            ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[2]/D
+                                                                                                            Slow         1.056      8.944
+
+
+Slack (MET) :             8.944ns  (requirement - actual skew)
+  Endpoint Source:        ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_reg_reg[7]/C
+                            (rising edge-triggered cell FDRE clocked by eth_clk)
+  Endpoint Destination:   ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[7]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk)
+  Reference Source:       ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_reg_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by eth_clk)
+  Reference Destination:  ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[2]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:    4.702ns
+  Reference Relative Delay:   3.129ns
+  Relative CRPR:              0.517ns
+  Actual Bus Skew:            1.056ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock eth_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           2.025     3.506    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.096     3.602 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.140     3.742    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.096     3.838 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.140     3.978    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.096     4.074 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.140     4.214    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.096     4.310 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.140     4.450    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.096     4.546 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.626     6.173    CLK100MHZ_IBUF_BUFG
+    SLICE_X56Y95         FDCE (Prop_fdce_C_Q)         0.518     6.691 r  clock_divider_reg[0]/Q
+                         net (fo=3, routed)           0.752     7.443    clock_divider[0]
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     7.539 r  eth_clock_buffer/O
+                         net (fo=363, routed)         1.878     9.418    ethernet/eth_mac_inst/tx_fifo/fifo_inst/eth_clock
+    SLICE_X0Y172         FDRE                                         r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_reg_reg[7]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y172         FDRE (Prop_fdre_C_Q)         0.419     9.837 r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_reg_reg[7]/Q
+                         net (fo=1, routed)           0.900    10.736    ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_reg[7]
+    SLICE_X0Y170         FDRE                                         r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411     1.411 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           1.920     3.331    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.091     3.422 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.133     3.555    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.091     3.646 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.133     3.779    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.091     3.870 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.133     4.003    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.091     4.094 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.133     4.227    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.091     4.318 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.753     6.071    ethernet/eth_mac_inst/tx_fifo/fifo_inst/CLK100MHZ_IBUF_BUFG
+    SLICE_X0Y170         FDRE                                         r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[7]/C
+                         clock pessimism              0.228     6.299    
+    SLICE_X0Y170         FDRE (Setup_fdre_C_D)       -0.265     6.034    ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[7]
+  -------------------------------------------------------------------
+                         data arrival                          10.736    
+                         clock arrival                          6.034    
+  -------------------------------------------------------------------
+                         relative delay                         4.702    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock eth_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411     1.411 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           1.920     3.331    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.091     3.422 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.133     3.555    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.091     3.646 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.133     3.779    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.091     3.870 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.133     4.003    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.091     4.094 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.133     4.227    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.091     4.318 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.505     5.824    CLK100MHZ_IBUF_BUFG
+    SLICE_X56Y95         FDCE (Prop_fdce_C_Q)         0.418     6.242 r  clock_divider_reg[0]/Q
+                         net (fo=3, routed)           0.669     6.911    clock_divider[0]
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091     7.002 r  eth_clock_buffer/O
+                         net (fo=363, routed)         1.752     8.754    ethernet/eth_mac_inst/tx_fifo/fifo_inst/eth_clock
+    SLICE_X0Y173         FDRE                                         r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_reg_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y173         FDRE (Prop_fdre_C_Q)         0.367     9.121 r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_reg_reg[2]/Q
+                         net (fo=1, routed)           0.373     9.494    ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_reg[2]
+    SLICE_X1Y172         FDRE                                         r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           2.025     3.506    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.096     3.602 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.140     3.742    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.096     3.838 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.140     3.978    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.096     4.074 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.140     4.214    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.096     4.310 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.140     4.450    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.096     4.546 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.876     6.423    ethernet/eth_mac_inst/tx_fifo/fifo_inst/CLK100MHZ_IBUF_BUFG
+    SLICE_X1Y172         FDRE                                         r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[2]/C
+                         clock pessimism             -0.228     6.195    
+    SLICE_X1Y172         FDRE (Hold_fdre_C_D)         0.170     6.365    ethernet/eth_mac_inst/tx_fifo/fifo_inst/rd_ptr_gray_sync1_reg_reg[2]
+  -------------------------------------------------------------------
+                         data arrival                           9.494    
+                         clock arrival                          6.365    
+  -------------------------------------------------------------------
+                         relative delay                         3.129    
+
+
+
+Id: 6
+set_bus_skew -from [get_cells -quiet {ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[*]}] -to [get_cells {ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[*]}] 20.000
+Requirement: 20.000ns
+Endpoints: 13
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+sys_clk               eth_clk               ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[9]/D
+                                                                            ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[2]/D
+                                                                                                            Slow         0.921     19.079
+
+
+Slack (MET) :             19.079ns  (requirement - actual skew)
+  Endpoint Source:        ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[9]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk)
+  Endpoint Destination:   ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[9]/D
+                            (rising edge-triggered cell FDRE clocked by eth_clk)
+  Reference Source:       ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk)
+  Reference Destination:  ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[2]/D
+                            (rising edge-triggered cell FDRE clocked by eth_clk)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            20.000ns
+  Endpoint Relative Delay:   -1.170ns
+  Reference Relative Delay:  -2.614ns
+  Relative CRPR:              0.523ns
+  Actual Bus Skew:            0.921ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           2.025     3.506    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.096     3.602 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.140     3.742    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.096     3.838 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.140     3.978    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.096     4.074 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.140     4.214    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.096     4.310 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.140     4.450    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.096     4.546 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.879     6.426    ethernet/eth_mac_inst/tx_fifo/fifo_inst/CLK100MHZ_IBUF_BUFG
+    SLICE_X5Y170         FDRE                                         r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[9]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y170         FDRE (Prop_fdre_C_Q)         0.419     6.845 r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[9]/Q
+                         net (fo=1, routed)           0.779     7.624    ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_sync_commit_reg[9]
+    SLICE_X2Y173         FDRE                                         r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[9]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock eth_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411     1.411 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           1.920     3.331    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.091     3.422 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.133     3.555    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.091     3.646 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.133     3.779    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.091     3.870 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.133     4.003    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.091     4.094 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.133     4.227    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.091     4.318 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.505     5.824    CLK100MHZ_IBUF_BUFG
+    SLICE_X56Y95         FDCE (Prop_fdce_C_Q)         0.418     6.242 r  clock_divider_reg[0]/Q
+                         net (fo=3, routed)           0.669     6.911    clock_divider[0]
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091     7.002 r  eth_clock_buffer/O
+                         net (fo=363, routed)         1.752     8.754    ethernet/eth_mac_inst/tx_fifo/fifo_inst/eth_clock
+    SLICE_X2Y173         FDRE                                         r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[9]/C
+                         clock pessimism              0.228     8.982    
+    SLICE_X2Y173         FDRE (Setup_fdre_C_D)       -0.188     8.794    ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[9]
+  -------------------------------------------------------------------
+                         data arrival                           7.624    
+                         clock arrival                          8.794    
+  -------------------------------------------------------------------
+                         relative delay                        -1.170    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.411     1.411 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           1.920     3.331    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.091     3.422 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.133     3.555    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.091     3.646 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.133     3.779    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.091     3.870 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.133     4.003    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.091     4.094 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.133     4.227    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.091     4.318 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.750     6.068    ethernet/eth_mac_inst/tx_fifo/fifo_inst/CLK100MHZ_IBUF_BUFG
+    SLICE_X3Y172         FDRE                                         r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y172         FDRE (Prop_fdre_C_Q)         0.367     6.435 r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_sync_commit_reg_reg[2]/Q
+                         net (fo=1, routed)           0.370     6.806    ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_sync_commit_reg[2]
+    SLICE_X2Y173         FDRE                                         r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock eth_clk rise edge)    0.000     0.000 r  
+    E3                                                0.000     0.000 r  CLK100MHZ (IN)
+                         net (fo=0)                   0.000     0.000    CLK100MHZ
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  CLK100MHZ_IBUF_inst/O
+                         net (fo=1, routed)           2.025     3.506    CLK100MHZ_IBUF
+    BUFGCTRL_X0Y21       BUFG (Prop_bufg_I_O)         0.096     3.602 r  CLK100MHZ_IBUF_BUFG_inst_replica_3/O
+                         net (fo=15, routed)          0.140     3.742    CLK100MHZ_IBUF_BUFG_repN_3
+    BUFGCTRL_X0Y20       BUFG (Prop_bufg_I_O)         0.096     3.838 r  CLK100MHZ_IBUF_BUFG_inst_replica_2/O
+                         net (fo=12, routed)          0.140     3.978    CLK100MHZ_IBUF_BUFG_repN_2
+    BUFGCTRL_X0Y19       BUFG (Prop_bufg_I_O)         0.096     4.074 r  CLK100MHZ_IBUF_BUFG_inst_replica_1/O
+                         net (fo=3, routed)           0.140     4.214    CLK100MHZ_IBUF_BUFG_repN_1
+    BUFGCTRL_X0Y18       BUFG (Prop_bufg_I_O)         0.096     4.310 r  CLK100MHZ_IBUF_BUFG_inst_replica/O
+                         net (fo=22, routed)          0.140     4.450    CLK100MHZ_IBUF_BUFG_repN
+    BUFGCTRL_X0Y17       BUFG (Prop_bufg_I_O)         0.096     4.546 r  CLK100MHZ_IBUF_BUFG_inst/O
+                         net (fo=64076, routed)       1.626     6.173    CLK100MHZ_IBUF_BUFG
+    SLICE_X56Y95         FDCE (Prop_fdce_C_Q)         0.518     6.691 r  clock_divider_reg[0]/Q
+                         net (fo=3, routed)           0.752     7.443    clock_divider[0]
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     7.539 r  eth_clock_buffer/O
+                         net (fo=363, routed)         1.877     9.417    ethernet/eth_mac_inst/tx_fifo/fifo_inst/eth_clock
+    SLICE_X2Y173         FDRE                                         r  ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[2]/C
+                         clock pessimism             -0.228     9.189    
+    SLICE_X2Y173         FDRE (Hold_fdre_C_D)         0.231     9.420    ethernet/eth_mac_inst/tx_fifo/fifo_inst/wr_ptr_commit_sync_reg_reg[2]
+  -------------------------------------------------------------------
+                         data arrival                           6.806    
+                         clock arrival                          9.420    
+  -------------------------------------------------------------------
+                         relative delay                        -2.614    
+
+
+

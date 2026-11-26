@@ -26,9 +26,9 @@ def references(gray):
     ax, ay = np.abs(mx), np.abs(my)
     quadrant = np.where(my < 0, np.where(mx < 0, 2, 3), np.where(mx < 0, 1, 0))
     sector = np.zeros_like(gray)
-    for k in range(16):
-        tangent = int(np.floor(np.tan((k+.5)*np.pi/32)*65536+.5))
-        sector[(ay != 0) & (ax*tangent <= ay*65536)] = k
+    for k in range(15):
+        tangent = int(np.floor(np.tan((k+1)*np.pi/32)*256+.5))
+        sector[(ay != 0) & (ax*tangent <= ay*256)] = k + 1
     # Check the vectorized reference against direct integer dot products.
     for y, x in [(21, 21), (100, 100), (240, 320), (458, 618)]:
         patch = gray[y-3:y+4, x-3:x+4].astype(np.int64)

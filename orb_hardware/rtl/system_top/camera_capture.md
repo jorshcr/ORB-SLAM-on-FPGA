@@ -31,9 +31,9 @@ is unused; higher octaves still use their external inputs pending scaler wiring.
 Unused color outputs can be left unconnected.
 
 Camera XCLK generation, SCCB register configuration, board pin constraints,
-and VGA YUV-to-RGB conversion are not provided here. Descriptor frame IDs are
-still zero until frame tags are carried through ORB; `pixel_frame_id` is valid
-only for the capture stream.
+and VGA YUV-to-RGB conversion are not provided here. Frame IDs are omitted for
+single-frame operation. `capture_enable` is synchronized into the camera clock
+domain and is sampled at VSYNC, so disabled frames are ignored completely.
 
 Run `python orb_hardware/scripts/camera_check.py` for XSim byte-order, coordinate,
 frame-boundary, startup-discard tests and full system-top elaboration.

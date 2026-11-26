@@ -17,13 +17,13 @@ module quadrant_angle_compute #(
 );
     logic [21:0] abs_moment_x, abs_moment_y;
     logic abs_valid, tan_valid, comparison_valid;
-    logic [15:0][42:0] tan_products;
-    logic [42:0] scaled_y;
-    logic [15:0] comparisons;
+    logic [14:0][34:0] tan_products;
+    logic [34:0] scaled_y;
+    logic [14:0] comparisons;
     logic [1:0] quadrant_pipe [0:2];
     logic [TAG_W-1:0] tag_pipe [0:2];
 
-    // Stage 2: sixteen parallel Q5.16 products.
+    // Stage 2: fifteen parallel products with eight fractional bits.
     tan_multiply tangent_products (
         .clk(clk), .reset(reset),
         .abs_moment_x(abs_moment_x), .in_valid(abs_valid),
@@ -64,14 +64,14 @@ module quadrant_angle_compute #(
 
             // Stage 2 metadata follows the multiplier.
             if (abs_valid) begin
-                scaled_y <= {5'b0, abs_moment_y, 16'b0};
+                scaled_y <= {5'b0, abs_moment_y, 8'b0};
                 quadrant_pipe[1] <= quadrant_pipe[0];
                 tag_pipe[1] <= tag_pipe[0];
             end
 
             // Stage 3: equality selects the higher threshold; zero moments fall back to zero.
             if (tan_valid) begin
-                for (int k = 0; k < 16; k++)
+                for (int k = 0; k < 15; k++)
                     comparisons[k] <= (scaled_y != 0) && (tan_products[k] <= scaled_y);
                 quadrant_pipe[2] <= quadrant_pipe[1];
                 tag_pipe[2] <= tag_pipe[1];
@@ -80,8 +80,8 @@ module quadrant_angle_compute #(
             // Stage 4: ascending overwrite gives the highest set bit priority.
             if (comparison_valid) begin
                 selected_sector = '0;
-                for (int k = 0; k < 16; k++)
-                    if (comparisons[k]) selected_sector = 4'(k);
+                for (int k = 0; k < 15; k++)
+                    if (comparisons[k]) selected_sector = 4'(k + 1);
 
                 out_quadrant <= quadrant_pipe[2];
                 out_sector <= selected_sector;
